@@ -1,26 +1,121 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-gold: #E0B97A;
+  --color-gold-dark: #C9A262;
+  --color-charcoal: #1A1A1A;
+  --color-charcoal-light: #2D2D2D;
+  --color-beige: #F7F2E9;
+
+  --font-sans: "Outfit", var(--font-space), "Space Grotesk", sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --background: #FCF9F5;
+  --foreground: #1A1A1A;
+  --gold: #E0B97A;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: #fff;
+}
+
+/* Smooth font rendering */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography Enhancements */
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.01em;
+  font-weight: 600;
+}
+
+p {
+  color: rgba(26, 26, 26, 0.8);
+}
+
+/* ================= PREMIUM ANIMATIONS ================= */
+
+/* Slow floating movement for background elements */
+.float-motion {
+  animation: float 12s ease-in-out infinite alternate;
+}
+
+@keyframes float {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-30px, -20px) scale(1.05); }
+  100% { transform: translate(20px, 15px) scale(1); }
+}
+
+/* Gentle shimmer effect for buttons/cards */
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(224, 185, 122, 0.1) 45%,
+    rgba(224, 185, 122, 0.2) 50%,
+    rgba(224, 185, 122, 0.1) 55%,
+    transparent 100%
+  );
+  transform: rotate(25deg);
+  animation: shimmer-sweep 6s infinite;
+}
+
+@keyframes shimmer-sweep {
+  0% { transform: translateX(-100%) rotate(25deg); }
+  100% { transform: translateX(100%) rotate(25deg); }
+}
+
+/* Soft light sweep for background visuals */
+.light-sweep-gold {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(224, 185, 122, 0.05) 50%,
+    transparent 70%
+  );
+  animation: slow-sweep 15s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes slow-sweep {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(50%); }
+}
+
+/* Gold Gradient Utility */
+.bg-gold-gradient {
+  background: linear-gradient(135deg, #E0B97A 0%, #C9A262 100%);
+}
+
+.text-gold-gradient {
+  background: linear-gradient(135deg, #E0B97A 0%, #C9A262 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
