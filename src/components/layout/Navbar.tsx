@@ -11,7 +11,6 @@ const navLinks = [
   { name: "About", href: "/about" },
   { name: "Services", href: "/services" },
   { name: "Projects", href: "/projects" },
-  { name: "Contact", href: "/contact" },
 ];
 
 import { useScroll, useMotionValueEvent } from "framer-motion";
@@ -47,7 +46,7 @@ export function Navbar() {
             className="fixed top-8 left-0 w-full z-[100] pointer-events-none flex justify-center"
           >
             <div className="px-6 md:px-12 w-full flex justify-center">
-              <nav className="pointer-events-auto flex items-center gap-8 px-8 py-3 rounded-full bg-[#FCF9F5]/80 backdrop-blur-xl border border-charcoal/5 shadow-[0_10px_40px_rgba(0,0,0,0.06)]">
+              <nav className="pointer-events-auto flex items-center gap-5 px-8 py-3 rounded-full bg-[#FCF9F5]/80 backdrop-blur-xl border border-charcoal/5 shadow-[0_10px_40px_rgba(0,0,0,0.06)]">
                 {/* LOGO */}
                 <Link href="/" className="flex items-center group transition-transform hover:scale-105 duration-300 mr-2">
                   <Image
@@ -104,7 +103,7 @@ export function Navbar() {
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[110] bg-[#FCF9F5] flex flex-col items-center justify-center gap-8"
           >
-            <button 
+            <button
               className="absolute top-8 right-8 text-charcoal"
               onClick={() => setMobileOpen(false)}
             >

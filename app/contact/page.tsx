@@ -1,6 +1,8 @@
 "use client"
 import { Card } from "@/components/ui/Card"
 import { Button } from "@/components/ui/Button"
+import FlowArc from "@/components/common/FlowArc";
+import { motion } from "framer-motion";
 
 const offices = [
   { name: "Dubai (Head Office)", address: "Property Investment Office 4 - S1, Dubai Investment Park First", box: "P O Box: 294587" },
@@ -11,48 +13,67 @@ const offices = [
 
 export default function ContactPage() {
   return (
-    <div className="pt-32 pb-24 min-h-screen">
-      <div className="container mx-auto px-6 md:px-12">
-        <h1 className="text-5xl font-bold text-white mb-6">Contact Us</h1>
-        <p className="text-xl text-white/70 max-w-3xl mb-16">Reach out to us across our 4 global locations.</p>
-        
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <Card className="p-8">
-            <h2 className="text-2xl font-bold text-white mb-6">Send a Message</h2>
-            <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-              <div>
-                <input type="text" placeholder="Your Name" className="w-full bg-white/5 border border-white/10 rounded-md p-3 text-white focus:outline-none focus:border-[#C9A96E]" />
-              </div>
-              <div>
-                <input type="email" placeholder="Your Email" className="w-full bg-white/5 border border-white/10 rounded-md p-3 text-white focus:outline-none focus:border-[#C9A96E]" />
-              </div>
-              <div>
-                <textarea rows={4} placeholder="Your Message" className="w-full bg-white/5 border border-white/10 rounded-md p-3 text-white focus:outline-none focus:border-[#C9A96E]" />
-              </div>
-              <Button type="submit" className="w-full">Submit Inquiry</Button>
-            </form>
-          </Card>
-          
-          <div className="space-y-6">
-             <div className="mb-8">
-               <h3 className="text-2xl font-bold text-white mb-2">Direct Contact</h3>
-               <p className="text-white/70">Email: info@suvik.ae</p>
-               <p className="text-white/70">Phone: +971 52 8673675</p>
-             </div>
-             
-             <h3 className="text-xl font-bold text-[#C9A96E] mb-4">Our Offices</h3>
-             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-               {offices.map((off, i) => (
-                 <Card key={i} className="p-5">
-                   <h4 className="font-bold text-white mb-2">{off.name}</h4>
-                   <p className="text-sm text-white/60 leading-relaxed mb-1">{off.address}</p>
-                   {off.box && <p className="text-sm text-white/40">{off.box}</p>}
-                 </Card>
-               ))}
-             </div>
+    <div className="flex flex-col bg-[#FCF9F5] min-h-screen">
+      {/* REFINED HERO */}
+      <section className="relative pt-44 pb-16 overflow-hidden">
+        <FlowArc />
+        <div className="container mx-auto px-6 md:px-12 relative z-10">
+          <div className="max-w-4xl">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.4em] text-[#E0B97A] mb-4">
+              Connect With Us
+            </p>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-charcoal mb-6 leading-[1.1] tracking-tight">
+              Global Presence <br />
+              <span className="text-[#E0B97A]">Local Expertise</span>
+            </h1>
+            <p className="text-lg md:text-xl text-charcoal/60 max-w-2xl leading-relaxed font-light">
+              Strategic support across four global locations, ensuring seamless operations 
+              and premium corporate execution.
+            </p>
           </div>
         </div>
-      </div>
+      </section>
+
+      <section className="pb-24">
+        <div className="container mx-auto px-6 md:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 xl:gap-24">
+            <Card className="p-10 bg-white border-black/5 shadow-[0_30px_60px_rgba(0,0,0,0.03)] border rounded-[32px]">
+              <h2 className="text-2xl font-semibold text-charcoal mb-8 tracking-tight">Send a Message</h2>
+              <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+                <div className="space-y-4">
+                  <input type="text" placeholder="Your Name" className="w-full bg-[#FCF9F5]/50 border border-black/10 rounded-xl p-4 text-charcoal placeholder:text-charcoal/30 focus:outline-none focus:border-[#E0B97A] transition-colors" />
+                  <input type="email" placeholder="Your Email" className="w-full bg-[#FCF9F5]/50 border border-black/10 rounded-xl p-4 text-charcoal placeholder:text-charcoal/30 focus:outline-none focus:border-[#E0B97A] transition-colors" />
+                  <textarea rows={5} placeholder="Your Message" className="w-full bg-[#FCF9F5]/50 border border-black/10 rounded-xl p-4 text-charcoal placeholder:text-charcoal/30 focus:outline-none focus:border-[#E0B97A] transition-colors resize-none" />
+                </div>
+                <Button type="submit" className="w-full py-7 text-[11px] tracking-[0.2em] font-bold uppercase rounded-xl">Submit Inquiry</Button>
+              </form>
+            </Card>
+            
+            <div className="space-y-12">
+               <div>
+                 <h3 className="text-sm font-bold uppercase tracking-[0.3em] text-[#E0B97A] mb-6">Direct Contact</h3>
+                 <div className="space-y-2">
+                   <p className="text-xl text-charcoal font-medium">info@suvik.ae</p>
+                   <p className="text-xl text-charcoal font-medium">+971 52 8673675</p>
+                 </div>
+               </div>
+               
+               <div>
+                <h3 className="text-sm font-bold uppercase tracking-[0.3em] text-[#E0B97A] mb-8">Our Global Offices</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {offices.map((off, i) => (
+                    <Card key={i} className="p-7 bg-white border-black/5 shadow-sm rounded-[24px]">
+                      <h4 className="font-semibold text-charcoal mb-3">{off.name}</h4>
+                      <p className="text-[13px] text-charcoal/60 leading-relaxed mb-1">{off.address}</p>
+                      {off.box && <p className="text-[13px] text-[#E0B97A] font-medium">{off.box}</p>}
+                    </Card>
+                  ))}
+                </div>
+               </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   )
 }

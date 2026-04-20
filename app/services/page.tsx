@@ -1,15 +1,26 @@
 import { ServicesSection } from "@/components/sections/ServicesSection";
-import { HorizontalScrollContainer } from "@/components/layout/HorizontalScrollContainer";
 
 export default function ServicesPage() {
   return (
     <div className="flex flex-col">
-      <div className="pt-32 min-h-[60vh] bg-charcoal">
-        <div className="container mx-auto px-6 md:px-12 mb-12">
-          <h1 className="text-5xl font-bold text-white mb-6">Our Services</h1>
-          <p className="text-xl text-white/70 max-w-3xl">Comprehensive solutions tailored to your unique requirements.</p>
+      {/* RESTORED & REFINED DARK HERO */}
+      <section className="relative pt-8 pb-1 bg-[#1A1A1A] overflow-hidden">
+        <div className="container mx-auto px-6 md:px-12 relative z-10">
+          <div className="max-w-4xl">
+            <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#E0B97A] mb-4">
+              Strategic Expertise
+            </p>
+            <h1 className="text-4xl md:text-5xl font-semibold text-white mb-6 leading-tight tracking-tight">
+              Our <span className="text-[#E0B97A]">Services</span>
+            </h1>
+            <p className="text-lg text-white/50 max-w-2xl leading-relaxed font-light">
+              Comprehensive business solutions and technological excellence tailored for
+              the UAE's evolving corporate landscape.
+            </p>
+          </div>
         </div>
-      </div>
+      </section>
+
       <ServicesSection />
     </div>
   )
