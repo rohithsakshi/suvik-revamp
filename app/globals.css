@@ -12,17 +12,17 @@
   --font-sans: "Outfit", var(--font-space), "Space Grotesk", sans-serif;
 }
 
-:root {
-  --background: #FCF9F5;
-  --foreground: #1A1A1A;
-  --gold: #E0B97A;
+@layer base {
+  html, body {
+    @apply antialiased min-h-screen text-foreground bg-background;
+    scroll-behavior: smooth;
+  }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans);
-  overflow-x: hidden;
+/* Ensure sections have enough space for the fixed navbar */
+section {
+  position: relative;
+  width: 100%;
 }
 
 ::selection {
@@ -37,7 +37,12 @@ body {
 }
 
 /* Typography Enhancements */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   letter-spacing: -0.01em;
   font-weight: 600;
 }
@@ -54,9 +59,17 @@ p {
 }
 
 @keyframes float {
-  0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(-30px, -20px) scale(1.05); }
-  100% { transform: translate(20px, 15px) scale(1); }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(-30px, -20px) scale(1.05);
+  }
+
+  100% {
+    transform: translate(20px, 15px) scale(1);
+  }
 }
 
 /* Gentle shimmer effect for buttons/cards */
@@ -72,40 +85,46 @@ p {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: linear-gradient(
-    120deg,
-    transparent 0%,
-    rgba(224, 185, 122, 0.1) 45%,
-    rgba(224, 185, 122, 0.2) 50%,
-    rgba(224, 185, 122, 0.1) 55%,
-    transparent 100%
-  );
+  background: linear-gradient(120deg,
+      transparent 0%,
+      rgba(224, 185, 122, 0.1) 45%,
+      rgba(224, 185, 122, 0.2) 50%,
+      rgba(224, 185, 122, 0.1) 55%,
+      transparent 100%);
   transform: rotate(25deg);
   animation: shimmer-sweep 6s infinite;
 }
 
 @keyframes shimmer-sweep {
-  0% { transform: translateX(-100%) rotate(25deg); }
-  100% { transform: translateX(100%) rotate(25deg); }
+  0% {
+    transform: translateX(-100%) rotate(25deg);
+  }
+
+  100% {
+    transform: translateX(100%) rotate(25deg);
+  }
 }
 
 /* Soft light sweep for background visuals */
 .light-sweep-gold {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    120deg,
-    transparent 30%,
-    rgba(224, 185, 122, 0.05) 50%,
-    transparent 70%
-  );
+  background: linear-gradient(120deg,
+      transparent 30%,
+      rgba(224, 185, 122, 0.05) 50%,
+      transparent 70%);
   animation: slow-sweep 15s linear infinite;
   pointer-events: none;
 }
 
 @keyframes slow-sweep {
-  0% { transform: translateX(-50%); }
-  100% { transform: translateX(50%); }
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(50%);
+  }
 }
 
 /* Gold Gradient Utility */
@@ -118,4 +137,8 @@ p {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+canvas {
+  display: block;
 }

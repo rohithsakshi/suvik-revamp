@@ -11,19 +11,19 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         ref={ref}
         className={cn(
-          "inline-flex items-center justify-center rounded-sm text-sm font-semibold transition-all px-8 py-3.5 tracking-wide uppercase active:scale-95 disabled:opacity-50 disabled:pointer-events-none cursor-pointer",
+          "inline-flex items-center justify-center rounded-sm text-[11px] font-bold transition-all px-10 py-4 tracking-[0.2em] uppercase active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none cursor-pointer",
 
           (variant === "default" || variant === "gold") &&
-          "bg-gold-gradient text-white hover:opacity-90 shadow-lg shadow-gold/20 shimmer",
+          "bg-gold text-white hover:bg-charcoal shadow-lg shadow-gold/10",
 
           variant === "charcoal" &&
-          "bg-charcoal text-white hover:bg-charcoal-light shadow-xl shadow-charcoal/10",
+          "bg-charcoal text-white hover:bg-gold shadow-xl shadow-charcoal/10",
 
           variant === "outline" &&
-          "border border-charcoal/20 text-charcoal hover:bg-charcoal/5",
+          "border border-charcoal/10 text-charcoal hover:bg-charcoal/5",
 
           variant === "ghost" &&
-          "text-charcoal hover:bg-beige/50",
+          "text-charcoal hover:bg-gold/5",
 
           className
         )}

@@ -1,161 +1,85 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import Image from "next/image";
 
-export function PremiumVisual() {
-  const [mounted, setMounted] = useState(false);
-  const [particles, setParticles] = useState<any[]>([]);
+type PremiumVisualProps = {
+  badge: string;
+  title: string;
+  description: string;
+};
 
-  useEffect(() => {
-    setMounted(true);
-    // Generate random values only on client side
-    const newParticles = [...Array(12)].map((_, i) => ({
-      id: i,
-      r: Math.random() * 2 + 1.5, // slightly larger
-      opacity: Math.random() * 0.6 + 0.3, // more visible
-      x: Math.random() * 800,
-      y: Math.random() * 800,
-      duration: 5 + Math.random() * 5,
-      delay: Math.random() * 10,
-    }));
-    setParticles(newParticles);
-  }, []);
-
-  if (!mounted) return <div className="relative w-full h-[500px] md:h-[600px]" />;
-
+export function PremiumVisual({
+  badge,
+  title,
+  description,
+}: PremiumVisualProps) {
   return (
-    <div className="relative w-full h-[500px] md:h-[600px] flex items-center justify-center overflow-visible">
-      
-      {/* GLOWING ORBS / SOFT LIGHT */}
+    <div className="relative h-[520px] md:h-[620px] rounded-[30px] overflow-hidden bg-[#FCF9F5] border border-black/5 flex items-center justify-center">
+
+      {/* Soft luxury glow */}
       <motion.div
         animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.6, 0.3], // slightly more opacity
-          x: [-20, 20, -20],
-          y: [-20, 20, -20],
+          scale: [1, 1.04, 1],
+          opacity: [0.12, 0.18, 0.12],
         }}
-        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute w-[450px] h-[450px] bg-gold/15 rounded-full blur-[110px]"
-      />
-      
-      <motion.div
-        animate={{
-          scale: [1.2, 1, 1.2],
-          opacity: [0.2, 0.5, 0.2],
-          x: [20, -20, 20],
-          y: [20, -20, 20],
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: "easeInOut",
         }}
-        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute w-[400px] h-[400px] bg-gold-dark/10 rounded-full blur-[90px] right-[-10%] top-[-10%]"
+        className="absolute w-[500px] h-[500px] rounded-full bg-[#E0B97A]/10 blur-[120px]"
       />
 
-      {/* ABSTRACT RIBBONS / WAVES */}
-      <svg
-        viewBox="0 0 800 800"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="w-full h-full relative z-10 opacity-100"
+      {/* Dubai skyline — clean transparent subtle background */}
+      <div className="absolute inset-0 z-0 flex items-end justify-center pointer-events-none">
+        <Image
+          src="/dubai-silhouete.png"
+          alt="Dubai Skyline"
+          width={1200}
+          height={500}
+          priority
+          className="
+            w-full
+            h-auto
+            object-contain
+            opacity-[0.22]
+            brightness-75
+            contrast-125
+            grayscale
+            select-none
+          "
+        />
+      </div>
+
+      {/* Elegant subtle rings only */}
+      <div className="absolute w-[560px] h-[560px] rounded-full border border-[#E0B97A]/10 z-0" />
+      <div className="absolute w-[420px] h-[420px] rounded-full border border-[#E0B97A]/10 z-0" />
+      <div className="absolute w-[300px] h-[300px] rounded-full border border-[#E0B97A]/10 z-0" />
+
+      {/* Dynamic content */}
+      <motion.div
+        key={title}
+        initial={{ opacity: 0, y: 18 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="relative z-20 text-center px-8 max-w-xl"
       >
-        <defs>
-          <linearGradient id="goldGradientPrimary" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#E0B97A" stopOpacity="0" />
-            <stop offset="50%" stopColor="#E0B97A" stopOpacity="0.8" />
-            <stop offset="100%" stopColor="#E0B97A" stopOpacity="0" />
-          </linearGradient>
-          
-          <linearGradient id="goldGradientSecondary" x1="100%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#C9A262" stopOpacity="0" />
-            <stop offset="50%" stopColor="#C9A262" stopOpacity="0.7" />
-            <stop offset="100%" stopColor="#C9A262" stopOpacity="0" />
-          </linearGradient>
+        <p className="text-[11px] uppercase tracking-[0.38em] text-[#E0B97A] mb-5 font-medium">
+          {badge}
+        </p>
 
-          <filter id="premiumGlow" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur stdDeviation="12" result="blur" />
-            <feComposite in="SourceGraphic" in2="blur" operator="over" />
-          </filter>
-        </defs>
+        <h3 className="text-4xl md:text-5xl font-semibold text-[#1A1A1A] leading-tight mb-5">
+          {title}
+        </h3>
 
-        {/* LAYER 1: SOFT WAVE */}
-        <motion.path
-          d="M 100 400 Q 300 100 500 400 T 800 400"
-          stroke="url(#goldGradientPrimary)"
-          strokeWidth="4" // bolded
-          strokeLinecap="round"
-          filter="url(#premiumGlow)"
-          initial={{ pathLength: 0, opacity: 0 }}
-          animate={{ 
-            pathLength: 1, 
-            opacity: [0, 0.9, 0.6],
-            d: [
-              "M 100 400 Q 300 100 500 400 T 800 400",
-              "M 100 420 Q 350 150 550 420 T 800 380",
-              "M 100 400 Q 300 100 500 400 T 800 400"
-            ]
-          }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        />
+        <p className="text-black/60 max-w-md mx-auto leading-relaxed text-sm md:text-base">
+          {description}
+        </p>
+      </motion.div>
 
-        {/* LAYER 2: ELEGANT CURVE */}
-        <motion.path
-          d="M 0 500 C 200 300 400 700 800 500"
-          stroke="url(#goldGradientSecondary)"
-          strokeWidth="3" // bolded
-          filter="url(#premiumGlow)"
-          animate={{ 
-            d: [
-              "M 0 500 C 200 300 400 700 800 500",
-              "M 0 480 C 250 350 450 650 800 520",
-              "M 0 500 C 200 300 400 700 800 500"
-            ]
-          }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-        />
-
-        {/* LAYER 3: LIGHT TRAILS */}
-        {[...Array(4)].map((_, i) => (
-          <motion.path
-            key={i}
-            d={`M ${150 + i * 50} 300 Q 400 ${200 + i * 100} ${650 - i * 50} 500`}
-            stroke="url(#goldGradientPrimary)"
-            strokeWidth="1.5" // bolded
-            strokeDasharray="100 200"
-            animate={{ 
-              strokeDashoffset: [-300, 300],
-              opacity: [0.3, 0.7, 0.3]
-            }}
-            transition={{ 
-              duration: 8 + i * 2, 
-              repeat: Infinity, 
-              ease: "linear",
-              delay: i * 2
-            }}
-          />
-        ))}
-
-        {/* FLOATING PARTICLES (CLIENT-SIDE ONLY) */}
-        {particles.map((p) => (
-          <motion.circle
-            key={p.id}
-            r={p.r}
-            fill="#E0B97A"
-            initial={{ 
-              opacity: p.opacity,
-              x: p.x,
-              y: p.y
-            }}
-            animate={{ 
-              y: [0, -60, 0],
-              opacity: [0.3, 0.9, 0.3]
-            }}
-            transition={{ 
-              duration: p.duration, 
-              repeat: Infinity, 
-              delay: p.delay 
-            }}
-          />
-        ))}
-      </svg>
+      {/* Bottom smooth fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#FCF9F5] to-transparent z-10 pointer-events-none" />
     </div>
   );
 }

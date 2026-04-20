@@ -26,59 +26,70 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled
-        ? "bg-white/90 backdrop-blur-xl border-b border-charcoal/5 py-4 shadow-sm"
-        : "bg-transparent py-6"}`}
+      className={`fixed top-0 w-full z-[100] transition-all duration-700 ${
+        scrolled
+          ? "bg-[#FCF9F5]/85 backdrop-blur-md border-b border-charcoal/5 py-3 shadow-sm"
+          : "bg-transparent py-5"
+      }`}
     >
-      <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
+      <div className="container mx-auto px-6 md:px-12 flex items-center">
+        
+        {/* LOGO - LEFT */}
+        <div className="flex-1 flex justify-start">
+          <Link href="/" className="flex items-center group transition-transform hover:scale-105 duration-300">
+            <Image
+              src="/logo.png"
+              alt="Suvik Logo"
+              width={140}
+              height={40}
+              className="h-10 w-auto object-contain"
+              priority
+            />
+          </Link>
+        </div>
 
-        {/* LOGO */}
-        <Link href="/" className="flex items-center group transition-transform hover:scale-105 duration-300">
-          <Image
-            src="/logo.png"
-            alt="Suvik Logo"
-            width={120}
-            height={34}
-            className="h-9 w-auto object-contain"
-            style={{ width: "auto", height: "auto" }}
-            priority
-          />
-        </Link>
-
-        {/* DESKTOP NAV */}
-        <nav className="hidden md:flex gap-10">
+        {/* DESKTOP NAV - CENTER */}
+        <nav className="hidden md:flex gap-10 items-center justify-center">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               href={link.href}
-              className={`text-[12px] font-bold tracking-[0.15em] uppercase transition-all relative group ${scrolled
-                ? "text-charcoal/80 hover:text-gold"
-                : "text-charcoal hover:text-gold"}`}
+              className="text-[11px] font-bold tracking-[0.25em] uppercase transition-all relative group text-charcoal/80 hover:text-gold"
             >
               {link.name}
-
-              <span className="absolute -bottom-1.5 left-0 w-0 h-[1.5px] bg-gold-gradient transition-all duration-500 group-hover:w-full"></span>
+              <motion.span 
+                className="absolute -bottom-1.5 left-0 h-[1.5px] bg-gold w-0 group-hover:w-full transition-all duration-500 ease-out"
+              />
             </Link>
           ))}
         </nav>
 
-        {/* CTA BUTTON (DESKTOP) */}
-        <div className="hidden md:block">
+        {/* CTA & DIRECT LINE - RIGHT */}
+        <div className="flex-1 hidden lg:flex items-center justify-end gap-10">
+          <div className="flex flex-col items-end">
+            <span className="text-[9px] text-charcoal/40 font-bold uppercase tracking-[0.2em] mb-1">Direct Line</span>
+            <a href="tel:+971528673675" className="text-sm font-semibold text-charcoal hover:text-gold transition-colors tracking-tight">
+              +971 52 867 3675
+            </a>
+          </div>
+
           <Link href="/contact">
-            <button className={`px-6 py-2.5 rounded-sm text-[10px] font-bold tracking-[0.2em] uppercase transition-all duration-300 border ${scrolled 
-              ? "bg-charcoal text-white border-charcoal hover:bg-gold hover:border-gold" 
-              : "bg-charcoal text-white border-charcoal hover:bg-gold hover:border-gold shadow-lg shadow-charcoal/10"}`}>
-              Get in Touch
+            <button className={`px-8 py-3 rounded-sm text-[10px] font-bold tracking-[0.25em] uppercase transition-all duration-500 overflow-hidden relative group border ${
+              scrolled 
+                ? "bg-charcoal text-white border-charcoal hover:bg-gold hover:border-gold" 
+                : "bg-charcoal text-white border-charcoal hover:bg-gold hover:border-gold"
+            }`}>
+              <span className="relative z-10 transition-colors duration-500">Contact Us</span>
             </button>
           </Link>
         </div>
 
         {/* MOBILE BUTTON */}
         <button
-          className="md:hidden transition-colors hover:text-gold text-charcoal"
+          className="md:hidden ml-auto transition-colors hover:text-gold text-charcoal"
           onClick={() => setMobileOpen(!mobileOpen)}
         >
-          {mobileOpen ? <X size={28} /> : <Menu size={28} />}
+          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
@@ -86,24 +97,31 @@ export function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.nav
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="absolute top-full left-0 w-full bg-white/95 backdrop-blur-2xl border-b border-charcoal/5 py-10 px-8 flex flex-col gap-8 md:hidden shadow-2xl overflow-hidden"
+            initial={{ opacity: 0, scaleY: 0 }}
+            animate={{ opacity: 1, scaleY: 1 }}
+            exit={{ opacity: 0, scaleY: 0 }}
+            style={{ originY: 0 }}
+            className="absolute top-full left-0 w-full bg-[#FCF9F5]/98 backdrop-blur-2xl border-b border-charcoal/5 py-12 px-8 flex flex-col gap-10 md:hidden shadow-2xl"
           >
             {navLinks.map((link) => (
-              <Link
+              <motion.div
                 key={link.name}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                className="text-charcoal/80 hover:text-gold text-2xl font-semibold tracking-tight transition-colors"
+                initial={{ x: -20, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 0.1 }}
               >
-                {link.name}
-              </Link>
+                <Link
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="text-charcoal/90 hover:text-gold text-3xl font-light tracking-tight transition-colors"
+                >
+                  {link.name}
+                </Link>
+              </motion.div>
             ))}
             
             <Link href="/contact" onClick={() => setMobileOpen(false)}>
-              <button className="w-full bg-gold-gradient text-white py-4 rounded-sm text-sm font-bold tracking-[0.2em] uppercase shadow-lg shadow-gold/20">
+              <button className="w-full bg-charcoal text-white py-5 rounded-sm text-xs font-bold tracking-[0.3em] uppercase">
                 Contact Us
               </button>
             </Link>
