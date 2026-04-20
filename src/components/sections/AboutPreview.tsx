@@ -92,8 +92,6 @@ export function AboutPreview() {
         </div>
       </div>
 
-      {/* BOTTOM DECORATIVE LINE */}
-      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/10 to-transparent" />
     </section>
   );
 }

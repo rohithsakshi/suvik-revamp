@@ -1,36 +1,59 @@
 "use client";
 
-import { useState } from "react";
-import Loader from "@/components/common/Loader";
-
+import { useState, useEffect } from "react";
 import { Hero } from "@/components/sections/Hero";
 import { AboutPreview } from "@/components/sections/AboutPreview";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { Clients } from "@/components/sections/Clients";
 import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { GlobalPresenceMap } from "@/components/sections/GlobalPresenceMap";
-import { Footer } from "@/components/layout/Footer";
+import {
+  DividerAboutServices,
+  DividerServicesClients,
+  DividerClientsProjects,
+  DividerProjectsGlobal,
+  DividerGlobalFooter,
+} from "@/components/ui/SectionDividers";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
 
-  return (
-    <>
-      {/* ✅ ALWAYS mounted */}
-      <Loader onFinish={() => setLoading(false)} />
+  useEffect(() => {
+    // Reveal content after loader finishes
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2800); // Slightly after loader fade-out starts
+    return () => clearTimeout(timer);
+  }, []);
 
-      {/* SITE */}
-      {!loading && (
-        <div className="animate-[fadeIn_1.2s_ease-in-out_forwards] flex flex-col">
-          <Hero />
-          <AboutPreview />
-          <ServicesSection />
-          <Clients />
-          <WhyChooseUs />
-          <GlobalPresenceMap />
-          <Footer />
-        </div>
-      )}
-    </>
+  return (
+    <div className="relative w-full">
+      <div
+        style={{
+          visibility: loading ? "hidden" : "visible",
+          opacity: loading ? 0 : 1,
+          transition: loading ? "none" : "opacity 0.8s ease",
+          pointerEvents: loading ? "none" : "auto",
+        }}
+        className="flex flex-col"
+      >
+        <Hero />
+
+        <AboutPreview />
+        <DividerAboutServices />
+
+        <ServicesSection />
+        <DividerServicesClients />
+
+        <Clients />
+        <DividerClientsProjects />
+
+        <WhyChooseUs />
+        <DividerProjectsGlobal />
+
+        <GlobalPresenceMap />
+        <DividerGlobalFooter />
+      </div>
+    </div>
   );
 }

@@ -1,6 +1,5 @@
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { HorizontalScrollContainer } from "@/components/layout/HorizontalScrollContainer";
-import { Footer } from "@/components/layout/Footer";
 
 export default function ServicesPage() {
   return (
@@ -12,7 +11,6 @@ export default function ServicesPage() {
         </div>
       </div>
       <ServicesSection />
-      <Footer />
     </div>
   )
 }

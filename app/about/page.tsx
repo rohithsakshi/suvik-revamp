@@ -1,7 +1,6 @@
 import { AboutPreview } from "@/components/sections/AboutPreview";
 import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { HorizontalScrollContainer } from "@/components/layout/HorizontalScrollContainer";
-import { Footer } from "@/components/layout/Footer";
 
 export default function AboutPage() {
   return (
@@ -14,7 +13,6 @@ export default function AboutPage() {
       </div>
       <AboutPreview />
       <WhyChooseUs />
-      <Footer />
     </div>
   )
 }

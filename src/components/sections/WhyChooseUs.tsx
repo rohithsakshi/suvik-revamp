@@ -132,8 +132,6 @@ export function WhyChooseUs() {
 
       </div>
 
-      {/* BOTTOM TRANSITION */}
-      <div className="mt-32 w-full h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent opacity-30" />
     </section>
   );
 }

@@ -8,13 +8,22 @@ export default function Loader({ onFinish }: { onFinish?: () => void }) {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    // 2.5 second total sequence
     const timer = setTimeout(() => {
       setIsVisible(false);
-      setTimeout(() => onFinish?.(), 800); // Trigger finish after fade out
+      setTimeout(() => {
+        // Restore scroll, pin to top, then hand off
+        document.body.style.overflow = "";
+        document.documentElement.style.overflow = "";
+        window.scrollTo({ top: 0, behavior: "instant" });
+        onFinish?.();
+      }, 820);
     }, 2200);
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+    };
   }, [onFinish]);
 
   return (
@@ -24,16 +33,13 @@ export default function Loader({ onFinish }: { onFinish?: () => void }) {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.8, ease: [0.43, 0.13, 0.23, 0.96] }}
-          className="fixed inset-0 z-[9999] bg-[#FCF9F5] flex items-center justify-center overflow-hidden"
+          className="fixed inset-0 z-[10000] bg-[#FCF9F5] flex items-center justify-center overflow-hidden"
         >
-          {/* ✨ CENTERED LOGO ANIMATION */}
+          {/* CENTERED LOGO ANIMATION */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ 
-              duration: 1.2, 
-              ease: [0.16, 1, 0.3, 1], // Custom premium easeOutExpo
-            }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             className="relative flex flex-col items-center gap-10"
           >
             <div className="relative">
@@ -45,8 +51,8 @@ export default function Loader({ onFinish }: { onFinish?: () => void }) {
                 priority
                 className="h-auto w-auto object-contain"
               />
-              
-              {/* SLIGHT SHIMMER UNDERNEATH */}
+
+              {/* SHIMMER LINE */}
               <motion.div
                 initial={{ opacity: 0, width: 0 }}
                 animate={{ opacity: 1, width: "100%" }}
@@ -65,8 +71,8 @@ export default function Loader({ onFinish }: { onFinish?: () => void }) {
             </motion.p>
           </motion.div>
 
-          {/* AMBIENT BACKGROUND GLOW */}
-          <motion.div 
+          {/* AMBIENT GLOW */}
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 2 }}
@@ -76,4 +82,4 @@ export default function Loader({ onFinish }: { onFinish?: () => void }) {
       )}
     </AnimatePresence>
   );
-}
+}

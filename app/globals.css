@@ -14,8 +14,8 @@
 
 @layer base {
   html, body {
-    @apply antialiased min-h-screen text-foreground bg-background;
-    scroll-behavior: smooth;
+    @apply antialiased min-h-screen text-foreground bg-[#FCF9F5];
+    overflow-x: hidden;
   }
 }
 

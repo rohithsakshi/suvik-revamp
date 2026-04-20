@@ -74,7 +74,7 @@ export function GlobalPresenceMap() {
   };
 
   return (
-    <section className="relative py-24 md:py-32 bg-[#FCF9F5] overflow-hidden">
+    <section className="relative pt-24 md:pt-32 pb-12 md:pb-16 bg-[#FCF9F5] overflow-hidden">
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         
         {/* SECTION HEADER */}
@@ -246,8 +246,6 @@ export function GlobalPresenceMap() {
         </div>
       </div>
       
-      {/* BOTTOM ACCENT */}
-      <div className="mt-20 w-full h-px bg-gradient-to-r from-transparent via-charcoal/10 to-transparent shadow-sm" />
     </section>
   );
 }
