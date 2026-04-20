@@ -16,8 +16,8 @@ export default function Loader({ onFinish }: { onFinish?: () => void }) {
         document.documentElement.style.overflow = "";
         window.scrollTo({ top: 0, behavior: "instant" });
         onFinish?.();
-      }, 820);
-    }, 1500);
+      }, 500);
+    }, 900);
 
     return () => {
       clearTimeout(timer);
