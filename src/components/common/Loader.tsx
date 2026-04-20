@@ -17,7 +17,7 @@ export default function Loader({ onFinish }: { onFinish?: () => void }) {
         window.scrollTo({ top: 0, behavior: "instant" });
         onFinish?.();
       }, 820);
-    }, 2200);
+    }, 1500);
 
     return () => {
       clearTimeout(timer);
