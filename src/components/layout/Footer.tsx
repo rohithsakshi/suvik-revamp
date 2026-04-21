@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView, Variants } from "framer-motion";
+import { motion, useInView, Variants, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -93,10 +93,28 @@ const FooterLink = ({ href, children }: { href: string; children: React.ReactNod
 );
 
 export function Footer() {
-  const ctaRef = useRef(null);
-  const footerRef = useRef(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
+  const footerRef = useRef<HTMLDivElement>(null);
   const ctaInView = useInView(ctaRef, { once: true, margin: "-80px" });
   const footerInView = useInView(footerRef, { once: true, margin: "-60px" });
+
+  // Mouse tilt for CTA card
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [5, -5]), { stiffness: 100, damping: 20 });
+  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-5, 5]), { stiffness: 100, damping: 20 });
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const rect = ctaRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    mouseX.set((e.clientX - rect.left) / rect.width - 0.5);
+    mouseY.set((e.clientY - rect.top) / rect.height - 0.5);
+  };
+
+  const handleMouseLeave = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+  };
 
   return (
     <section className="relative z-10" style={{ background: '#FCF9F5' }}>
@@ -104,23 +122,45 @@ export function Footer() {
       <div className="container mx-auto px-6 md:px-12 pb-0 pt-20">
         <motion.div
           ref={ctaRef}
-          initial={{ opacity: 0, y: 50 }}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+          initial={{ opacity: 0, y: 50, rotateX: 0, rotateY: 0 }}
           animate={ctaInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="relative rounded-[2rem] overflow-hidden"
-          style={{
-            background: 'linear-gradient(135deg, #ffffff 60%, #fdf6e8 100%)',
-            boxShadow: '0 30px 80px rgba(120,90,30,0.12), 0 4px 20px rgba(224,185,122,0.08)',
-            border: '1px solid rgba(224,185,122,0.18)',
+          style={{ 
+            rotateX, 
+            rotateY, 
+            perspective: "1200px",
+            transformStyle: "preserve-3d"
           }}
+          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          className="relative rounded-[2rem] overflow-hidden transform-gpu"
         >
+          <div 
+            className="absolute inset-0" 
+            style={{
+              background: 'linear-gradient(135deg, #ffffff 60%, #fdf6e8 100%)',
+              boxShadow: '0 30px 80px rgba(120,90,30,0.12), 0 4px 20px rgba(224,185,122,0.08)',
+              border: '1px solid rgba(224,185,122,0.18)',
+            }}
+          />
+          
           {/* Decorative gold orb */}
-          <div className="absolute top-0 right-0 w-64 h-64 rounded-full pointer-events-none"
-            style={{ background: 'radial-gradient(circle, rgba(224,185,122,0.12) 0%, transparent 70%)', transform: 'translate(40%, -40%)' }} />
-          <div className="absolute bottom-0 left-0 w-40 h-40 rounded-full pointer-events-none"
-            style={{ background: 'radial-gradient(circle, rgba(224,185,122,0.07) 0%, transparent 70%)', transform: 'translate(-30%, 30%)' }} />
+          <motion.div 
+            className="absolute top-0 right-0 w-64 h-64 rounded-full pointer-events-none"
+            style={{ 
+              background: 'radial-gradient(circle, rgba(224,185,122,0.12) 0%, transparent 70%)', 
+              transform: 'translate(40%, -40%) translateZ(20px)' 
+            }} 
+          />
+          <motion.div 
+            className="absolute bottom-0 left-0 w-40 h-40 rounded-full pointer-events-none"
+            style={{ 
+              background: 'radial-gradient(circle, rgba(224,185,122,0.07) 0%, transparent 70%)', 
+              transform: 'translate(-30%, 30%) translateZ(10px)' 
+            }} 
+          />
 
-          <div className="relative z-10 px-8 md:px-16 py-14 flex flex-col md:flex-row md:items-center md:justify-between gap-10">
+          <div className="relative z-10 px-8 md:px-16 py-14 flex flex-col md:flex-row md:items-center md:justify-between gap-10 transform-gpu" style={{ transform: "translateZ(30px)" }}>
             <div className="max-w-xl">
               <motion.h2
                 initial={{ opacity: 0, y: 20 }}
@@ -144,13 +184,15 @@ export function Footer() {
               initial={{ opacity: 0, scale: 0.92 }}
               animate={ctaInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.6, delay: 0.44 }}
+              whileHover={{ scale: 1.05, translateZ: "20px" }}
+              className="transform-gpu"
             >
               <Link
                 href="/contact"
                 className="inline-flex items-center gap-4 whitespace-nowrap px-10 py-5 rounded-full font-bold tracking-[0.2em] text-white text-[11px] uppercase transition-all duration-300"
                 style={{
                   background: 'linear-gradient(135deg, #1a1a1a 0%, #2d2510 60%, #1a1a1a 100%)',
-                  boxShadow: '0 8px 28px rgba(26,20,8,0.28)',
+                  boxShadow: '0 12px 32px rgba(26,20,8,0.35)',
                   border: '1px solid rgba(224,185,122,0.3)',
                 }}
               >

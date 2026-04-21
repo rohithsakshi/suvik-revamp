@@ -58,9 +58,10 @@ export function ServicesSection() {
   const [activeService, setActiveService] = useState(services[0]);
 
   return (
-    <section className="relative py-28 md:py-36 bg-[#FCF9F5] overflow-hidden">
-      {/* Background Glow */}
-      <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-[#E0B97A]/10 blur-[120px] rounded-full pointer-events-none" />
+    <section className="relative py-20 md:py-28 overflow-hidden">
+      {/* Ambient glow */}
+      <div className="absolute top-20 right-0 w-[320px] h-[320px] bg-[#C9A96E]/10 blur-[100px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-20 left-0 w-[240px] h-[240px] bg-[#C9A96E]/6 blur-[80px] rounded-full pointer-events-none" />
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         {/* HEADER */}
@@ -69,30 +70,31 @@ export function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="mb-20"
+          className="mb-12 relative"
         >
-          <p className="text-[11px] font-semibold uppercase tracking-[0.42em] text-[#E0B97A] mb-6">
-            Strategic Services
-          </p>
+          <div className="flex items-center gap-3 mb-5">
+            <div className="w-6 h-px bg-[#C9A96E] opacity-60" />
+            <p className="text-[10px] font-bold uppercase tracking-[0.42em] text-[#C9A96E]">
+              Strategic Services
+            </p>
+          </div>
 
-          <h2 className="text-4xl md:text-6xl xl:text-7xl font-semibold text-[#1A1A1A] leading-[1.05] tracking-tight max-w-[1100px]">
+          <h2 className="text-4xl md:text-5xl xl:text-6xl font-semibold text-[#1A1A1A] leading-[1.05] tracking-tight max-w-[900px]">
             Premium Services{" "}
-            <span className="text-[#E0B97A]">
-              for Global Expansion
-            </span>
+            <span className="text-[#C9A96E]">for Global Expansion</span>
           </h2>
 
-          <p className="text-lg md:text-xl text-black/65 leading-relaxed max-w-[760px] mt-8">
-            We deliver end-to-end consulting, business setup and
-            technology solutions designed for ambitious companies
-            entering the UAE and scaling internationally.
+          <p className="text-base md:text-lg text-black/55 leading-relaxed max-w-[640px] mt-6 font-light">
+            We deliver end-to-end consulting, business setup and technology
+            solutions designed for ambitious companies entering the UAE and
+            scaling internationally.
           </p>
         </motion.div>
 
-        {/* MAIN CONTENT */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 xl:gap-24 items-start">
-          {/* LEFT SIDE */}
-          <div className="space-y-5">
+        {/* MAIN GRID */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 xl:gap-14 items-stretch">
+          {/* LEFT — Service cards */}
+          <div className="space-y-4 flex flex-col justify-between min-h-full">
             {services.map((service, index) => {
               const Icon = service.icon;
               const isActive = activeService.title === service.title;
@@ -100,29 +102,35 @@ export function ServicesSection() {
               return (
                 <motion.div
                   key={service.title}
-                  initial={{ opacity: 0, y: 28 }}
+                  initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{
                     duration: 0.7,
-                    delay: index * 0.12,
+                    delay: index * 0.07,
                   }}
-                  whileHover={{ y: -4 }}
                   onMouseEnter={() => setActiveService(service)}
-                  className="group cursor-pointer"
+                  whileHover={{ 
+                    y: -5,
+                    rotateX: 2,
+                    rotateY: -2,
+                    transition: { duration: 0.4, ease: "easeOut" }
+                  }}
+                  className="group cursor-pointer flex-1"
+                  style={{ perspective: "1000px" }}
                 >
                   <div
-                    className={`rounded-[28px] border p-6 md:p-7 transition-all duration-500 ${isActive
-                        ? "bg-white border-[#E0B97A]/30 shadow-[0_20px_50px_rgba(0,0,0,0.04)]"
-                        : "bg-white border-black/5 hover:border-[#E0B97A]/20"
+                    className={`rounded-[24px] border p-6 md:p-7 h-full transition-all duration-500 transform-gpu ${isActive
+                        ? "bg-white border-[#C9A96E]/30 shadow-[0_22px_50px_rgba(201,169,110,0.08)] scale-[1.02]"
+                        : "bg-white/60 border-black/6 hover:border-[#C9A96E]/20 hover:bg-white/80"
                       }`}
+                    style={{ transformStyle: "preserve-3d" }}
                   >
-                    <div className="flex items-start gap-5">
-                      {/* Icon */}
+                    <div className="flex items-start gap-4" style={{ transform: "translateZ(20px)" }}>
                       <div
-                        className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 transition-all duration-500 ${isActive
-                            ? "bg-[#E0B97A] text-white"
-                            : "bg-[#E0B97A]/10 text-[#E0B97A]"
+                        className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 transition-all duration-500 ${isActive
+                            ? "bg-[#C9A96E] text-white"
+                            : "bg-[#C9A96E]/10 text-[#C9A96E]"
                           }`}
                       >
                         <Icon className="w-5 h-5 stroke-[1.8]" />
@@ -130,21 +138,21 @@ export function ServicesSection() {
 
                       <div className="flex-1">
                         <div className="flex items-start justify-between gap-4">
-                          <h3 className="text-xl font-semibold text-[#1A1A1A] mb-2">
+                          <h3 className="text-[17px] font-semibold text-[#1A1A1A] mb-2">
                             {service.title}
                           </h3>
 
-                          <div className="w-10 h-10 rounded-full border border-[#E0B97A]/20 flex items-center justify-center">
+                          <div className="w-8 h-8 rounded-full border border-[#C9A96E]/20 flex items-center justify-center shrink-0">
                             <ArrowUpRight
-                              className={`w-4 h-4 text-[#E0B97A] transition-all duration-500 ${isActive
-                                  ? "translate-x-1 -translate-y-1 opacity-100"
-                                  : "opacity-70"
+                              className={`w-3.5 h-3.5 text-[#C9A96E] transition-all duration-500 ${isActive
+                                  ? "translate-x-0.5 -translate-y-0.5 opacity-100"
+                                  : "opacity-60"
                                 }`}
                             />
                           </div>
                         </div>
 
-                        <p className="text-black/60 leading-relaxed text-[15px]">
+                        <p className="text-black/55 leading-relaxed text-[14px]">
                           {service.description}
                         </p>
                       </div>
@@ -155,17 +163,15 @@ export function ServicesSection() {
             })}
           </div>
 
-          {/* RIGHT SIDE DYNAMIC PANEL */}
+          {/* RIGHT — Premium visual */}
           <motion.div
             key={activeService.title}
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="relative"
+            transition={{ duration: 0.45 }}
+            className="relative h-full"
           >
-            <div className="relative bg-white rounded-[36px] border border-black/5 p-4 md:p-6 shadow-[0_30px_80px_rgba(0,0,0,0.03)] overflow-hidden">
-              <div className="absolute top-0 left-0 w-full h-full light-sweep-gold pointer-events-none" />
-
+            <div className="relative bg-white rounded-[28px] border border-black/5 p-4 md:p-5 shadow-[0_20px_60px_rgba(0,0,0,0.04)] overflow-hidden h-full min-h-[720px]">
               <PremiumVisual
                 badge={activeService.badge}
                 title={activeService.heading}
