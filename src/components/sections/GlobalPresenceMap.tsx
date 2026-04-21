@@ -155,14 +155,13 @@ export function GlobalPresenceMap() {
                           loc.type === "primary"
                             ? "#C9A96E"
                             : activeLocation.id === loc.id
-                            ? "#C9A96E"
-                            : "#64748b",
+                              ? "#C9A96E"
+                              : "#64748b",
                       }}
-                      className={`rounded-full border-2 shadow-xl transition-all duration-300 group-hover/marker:scale-150 ${
-                        loc.type === "primary"
-                          ? "w-4 h-4 border-white/90"
-                          : "w-3 h-3 border-white/70"
-                      }`}
+                      className={`rounded-full border-2 shadow-xl transition-all duration-300 group-hover/marker:scale-150 ${loc.type === "primary"
+                        ? "w-4 h-4 border-white/90"
+                        : "w-3 h-3 border-white/70"
+                        }`}
                     />
                     {(activeLocation.id === loc.id || loc.type === "primary") && (
                       <div className="absolute inset-0 blur-md bg-[#C9A96E] opacity-40 -z-10" />
@@ -170,11 +169,10 @@ export function GlobalPresenceMap() {
                   </div>
 
                   <div
-                    className={`absolute top-full mt-3 left-1/2 -translate-x-1/2 transition-all duration-300 ${
-                      activeLocation.id === loc.id
-                        ? "opacity-100 translate-y-0"
-                        : "opacity-0 -translate-y-2 pointer-events-none"
-                    }`}
+                    className={`absolute top-full mt-3 left-1/2 -translate-x-1/2 transition-all duration-300 ${activeLocation.id === loc.id
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 -translate-y-2 pointer-events-none"
+                      }`}
                   >
                     <span className="text-[10px] font-bold text-white/80 uppercase tracking-widest whitespace-nowrap bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-sm border border-white/10 shadow-sm">
                       {loc.city}
@@ -222,7 +220,7 @@ export function GlobalPresenceMap() {
               >
                 <div className="absolute -top-10 -right-10 w-36 h-36 bg-[#C9A96E]/5 rounded-full blur-3xl pointer-events-none" />
 
-                <div className="relative z-10">
+                <div className="relative z-10 dark-panel-info">
                   <div className="w-11 h-11 rounded-full flex items-center justify-center mb-6 border border-[#C9A96E]/30"
                     style={{ background: "rgba(201,169,110,0.08)" }}>
                     <MapPin className="w-5 h-5 text-[#C9A96E]" />
@@ -231,32 +229,32 @@ export function GlobalPresenceMap() {
                   <h3 className="text-3xl md:text-4xl font-semibold text-white mb-2 tracking-tight">
                     {activeLocation.city}
                   </h3>
-
-                  <p className="text-[#C9A96E] font-bold text-[10px] uppercase tracking-[0.3em] mb-8">
+                  <p style={{ color: "rgba(255,255,255,0.65)" }} className="font-semibold text-[11px] uppercase tracking-[0.28em] mb-8">
                     {activeLocation.country}
-                    <span className="mx-2 opacity-30 font-light">|</span>
+                    <span style={{ color: "rgba(255,255,255,0.25)" }} className="mx-2 font-light">|</span>
                     {activeLocation.role}
                   </p>
 
                   <div className="space-y-6">
-                    <div className="border-l-2 border-[#C9A96E]/20 pl-5">
-                      <span className="block text-[9px] font-bold text-white/30 uppercase tracking-[0.2em] mb-2">
+                    <div className="border-l-2 border-[#C9A96E]/40 pl-5">
+                      <span style={{ color: "rgba(255,255,255,0.55)" }} className="block text-[10px] font-bold uppercase tracking-[0.22em] mb-2">
                         Office Location
                       </span>
-                      <p className="text-white/60 text-base leading-relaxed">
+                      <p style={{ color: "rgba(255,255,255,0.9)" }} className="text-base leading-relaxed">
                         {activeLocation.address}
                       </p>
                     </div>
 
-                    <div className="border-l-2 border-[#C9A96E]/20 pl-5">
-                      <span className="block text-[9px] font-bold text-white/30 uppercase tracking-[0.2em] mb-2">
+                    <div className="border-l-2 border-[#C9A96E]/40 pl-5">
+                      <span style={{ color: "rgba(255,255,255,0.55)" }} className="block text-[10px] font-bold uppercase tracking-[0.22em] mb-2">
                         Support & Inquiries
                       </span>
                       <a
                         href={`mailto:${activeLocation.email}`}
-                        className="text-white/70 text-base font-medium hover:text-[#C9A96E] transition-colors flex items-center gap-3"
+                        style={{ color: "rgba(255,255,255,0.9)" }}
+                        className="hover:text-[#C9A96E] transition-colors flex items-center gap-3 text-base font-medium"
                       >
-                        <Mail className="w-4 h-4 text-[#C9A96E]/60" />
+                        <Mail className="w-4 h-4 text-[#C9A96E]" />
                         {activeLocation.email}
                       </a>
                     </div>

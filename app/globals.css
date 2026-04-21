@@ -51,6 +51,20 @@ p {
   color: rgba(26, 26, 26, 0.8);
 }
 
+/* Force light text in dark panels where global tag selectors override tailwind classes */
+.dark-panel-info p:hover,
+.dark-panel-info span:hover,
+.dark-panel-info a:hover {
+  color: #C9A96E !important;
+  transition: color 0.3s ease;
+}
+
+.dark-panel-info p,
+.dark-panel-info span,
+.dark-panel-info a {
+  transition: color 0.3s ease;
+}
+
 /* ================= PREMIUM ANIMATIONS ================= */
 
 /* Slow floating movement for background elements */
