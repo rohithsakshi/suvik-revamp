@@ -14,21 +14,60 @@
 
 @layer base {
   html {
-    scroll-behavior: auto !important;
+    /* Lenis works best with overflow-y: scroll to avoid layout shift */
+    overflow-y: scroll;
   }
+  
   html, body {
-    @apply antialiased min-h-screen text-foreground;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    @apply antialiased text-foreground;
     background-color: #EDE6DA;
+  }
+
+  body {
     overflow-x: hidden;
-    overflow-anchor: none;
-    overscroll-behavior: none;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Base Layout spacing */
+  section {
+    position: relative;
+    width: 100%;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    letter-spacing: -0.01em;
+    font-weight: 600;
+  }
+
+  p {
+    color: rgba(20, 20, 20, 0.75);
   }
 }
 
-/* Ensure sections have enough space for the fixed navbar */
-section {
-  position: relative;
-  width: 100%;
+/* Lenis CSS support */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }
 
 ::selection {
@@ -36,118 +75,7 @@ section {
   color: #fff;
 }
 
-/* Smooth font rendering */
-body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Typography Enhancements */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  letter-spacing: -0.01em;
-  font-weight: 600;
-}
-
-p {
-  color: rgba(20, 20, 20, 0.75);
-}
-
-/* Force light text in dark panels where global tag selectors override tailwind classes */
-.dark-panel-info p:hover,
-.dark-panel-info span:hover,
-.dark-panel-info a:hover {
-  color: #C9A96E !important;
-  transition: color 0.3s ease;
-}
-
-.dark-panel-info p,
-.dark-panel-info span,
-.dark-panel-info a {
-  transition: color 0.3s ease;
-}
-
-/* ================= PREMIUM ANIMATIONS ================= */
-
-/* Slow floating movement for background elements */
-.float-motion {
-  animation: float 12s ease-in-out infinite alternate;
-}
-
-@keyframes float {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-
-  50% {
-    transform: translate(-30px, -20px) scale(1.05);
-  }
-
-  100% {
-    transform: translate(20px, 15px) scale(1);
-  }
-}
-
-/* Gentle shimmer effect for buttons/cards */
-.shimmer {
-  position: relative;
-  overflow: hidden;
-}
-
-.shimmer::after {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(120deg,
-      transparent 0%,
-      rgba(224, 185, 122, 0.1) 45%,
-      rgba(224, 185, 122, 0.2) 50%,
-      rgba(224, 185, 122, 0.1) 55%,
-      transparent 100%);
-  transform: rotate(25deg);
-  animation: shimmer-sweep 6s infinite;
-}
-
-@keyframes shimmer-sweep {
-  0% {
-    transform: translateX(-100%) rotate(25deg);
-  }
-
-  100% {
-    transform: translateX(100%) rotate(25deg);
-  }
-}
-
-/* Soft light sweep for background visuals */
-.light-sweep-gold {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(120deg,
-      transparent 30%,
-      rgba(224, 185, 122, 0.05) 50%,
-      transparent 70%);
-  animation: slow-sweep 15s linear infinite;
-  pointer-events: none;
-}
-
-@keyframes slow-sweep {
-  0% {
-    transform: translateX(-50%);
-  }
-
-  100% {
-    transform: translateX(50%);
-  }
-}
-
-/* Gold Gradient Utility */
+/* Utilities */
 .bg-gold-gradient {
   background: linear-gradient(135deg, #C9A96E 0%, #B08A4E 100%);
 }

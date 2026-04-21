@@ -1,18 +1,26 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Lenis from "lenis";
 
 export function SmoothScrollProvider({ children }: { children: React.ReactNode }) {
+  const lenisRef = useRef<Lenis | null>(null);
+
   useEffect(() => {
+    // Initialize Lenis on the window scroll
     const lenis = new Lenis({
-      lerp: 0.1, // Premium responsive momentum
-      wheelMultiplier: 1.1, // Slight crispness for wheel
-      touchMultiplier: 1.5, // Better response for trackpad/touch
-      infinite: false,
-      syncTouch: false, // Maintain natural mobile scrolling
+      duration: 1.5, // "80's movie" slow feel
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Smooth exponential ease
+      orientation: "vertical",
+      gestureOrientation: "vertical",
+      smoothWheel: true,
+      wheelMultiplier: 0.8, // Weighted feel
+      touchMultiplier: 1.5,
     });
 
+    lenisRef.current = lenis;
+
+    // Animation loop
     function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
@@ -20,12 +28,11 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
 
     requestAnimationFrame(raf);
 
-    // Anchor links smooth scroll override for Lenis
+    // Sync with anchor links
     const handleAnchorClick = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      const anchor = target.closest("a");
-      if (anchor && anchor.hash && anchor.origin === window.location.origin) {
-        const targetElement = document.querySelector(anchor.hash);
+      const target = (e.target as HTMLElement).closest("a");
+      if (target && target.hash && target.origin === window.location.origin) {
+        const targetElement = document.querySelector(target.hash);
         if (targetElement) {
           e.preventDefault();
           lenis.scrollTo(targetElement as HTMLElement);

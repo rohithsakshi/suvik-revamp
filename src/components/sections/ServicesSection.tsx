@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Briefcase,
   Code,
@@ -61,12 +61,7 @@ export function ServicesSection() {
   return (
     <section className="relative py-20 md:py-28 overflow-hidden">
       {/* Ambient glow */}
-      <ScrollParallax speed={0.15}>
-        <div className="absolute top-20 right-0 w-[320px] h-[320px] bg-[#C9A96E]/10 blur-[100px] rounded-full pointer-events-none" />
-      </ScrollParallax>
-      <ScrollParallax speed={-0.1}>
-        <div className="absolute bottom-20 left-0 w-[240px] h-[240px] bg-[#C9A96E]/6 blur-[80px] rounded-full pointer-events-none" />
-      </ScrollParallax>
+      <div className="absolute top-20 right-0 w-[400px] h-[400px] bg-[#C9A96E]/5 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         {/* HEADER */}
@@ -96,7 +91,7 @@ export function ServicesSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 xl:gap-14 items-stretch">
           {/* LEFT — Service cards */}
           <StaggerReveal baseDelay={0.3} stagger={0.12} className="space-y-4 flex flex-col justify-between min-h-full">
-            {services.map((service, index) => {
+            {services.map((service) => {
               const Icon = service.icon;
               const isActive = activeService.title === service.title;
 
@@ -106,29 +101,29 @@ export function ServicesSection() {
                     onMouseEnter={() => setActiveService(service)}
                     whileHover={{ 
                       y: -5,
-                      rotateX: 2,
-                      rotateY: -2,
-                      transition: { duration: 0.4, ease: "easeOut" }
+                      transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] }
                     }}
                     className="group cursor-pointer h-full"
-                    style={{ perspective: "1000px" }}
                   >
-                    <div
-                      className={`rounded-[24px] border p-6 md:p-7 h-full transition-all duration-500 transform-gpu ${isActive
-                          ? "bg-[#EDE6DA] border-[#C9A96E]/40 shadow-[0_20px_50px_rgba(0,0,0,0.06)] scale-[1.02]"
-                          : "bg-[#EDE6DA]/40 border-black/5 hover:border-[#C9A96E]/20 hover:bg-[#EDE6DA]/60"
-                        }`}
-                      style={{ transformStyle: "preserve-3d" }}
+                    <motion.div
+                      animate={{
+                        backgroundColor: isActive ? "rgba(237, 230, 218, 1)" : "rgba(237, 230, 218, 0.4)",
+                        borderColor: isActive ? "rgba(201, 169, 110, 0.4)" : "rgba(0, 0, 0, 0.05)",
+                        scale: isActive ? 1.02 : 0.98,
+                      }}
+                      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                      className="rounded-[24px] border p-6 md:p-7 h-full flex flex-col justify-center"
                     >
-                      <div className="flex items-start gap-4" style={{ transform: "translateZ(20px)" }}>
-                        <div
-                          className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 transition-all duration-500 ${isActive
-                              ? "bg-[#C9A96E] text-white"
-                              : "bg-[#C9A96E]/10 text-[#C9A96E]"
-                            }`}
+                      <div className="flex items-start gap-4">
+                        <motion.div
+                          animate={{
+                            backgroundColor: isActive ? "#C9A96E" : "rgba(201, 169, 110, 0.1)",
+                            color: isActive ? "#FFFFFF" : "#C9A96E",
+                          }}
+                          className="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0"
                         >
                           <Icon className="w-5 h-5 stroke-[1.8]" />
-                        </div>
+                        </motion.div>
 
                         <div className="flex-1">
                           <div className="flex items-start justify-between gap-4">
@@ -136,14 +131,15 @@ export function ServicesSection() {
                               {service.title}
                             </h3>
 
-                            <div className="w-8 h-8 rounded-full border border-[#C9A96E]/20 flex items-center justify-center shrink-0">
-                              <ArrowUpRight
-                                className={`w-3.5 h-3.5 text-[#C9A96E] transition-all duration-500 ${isActive
-                                    ? "translate-x-0.5 -translate-y-0.5 opacity-100"
-                                    : "opacity-60"
-                                  }`}
-                              />
-                            </div>
+                            <motion.div 
+                              animate={{ 
+                                opacity: isActive ? 1 : 0.4,
+                                rotate: isActive ? 0 : -45
+                              }}
+                              className="w-8 h-8 rounded-full border border-[#C9A96E]/20 flex items-center justify-center shrink-0"
+                            >
+                              <ArrowUpRight className="w-3.5 h-3.5 text-[#C9A96E]" />
+                            </motion.div>
                           </div>
 
                           <p className="text-black/55 leading-relaxed text-[14px]">
@@ -151,7 +147,7 @@ export function ServicesSection() {
                           </p>
                         </div>
                       </div>
-                    </div>
+                    </motion.div>
                   </motion.div>
                 </StaggerItem>
               );
@@ -159,21 +155,24 @@ export function ServicesSection() {
           </StaggerReveal>
 
           {/* RIGHT — Premium visual */}
-          <motion.div
-            key={activeService.title}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45 }}
-            className="relative h-full"
-          >
-            <div className="relative bg-[#EDE6DA]/40 rounded-[28px] border border-black/5 p-4 md:p-5 shadow-[0_20px_60px_rgba(0,0,0,0.04)] overflow-hidden h-full min-h-[720px]">
-              <PremiumVisual
-                badge={activeService.badge}
-                title={activeService.heading}
-                description={activeService.visualDescription}
-              />
-            </div>
-          </motion.div>
+          <div className="relative h-full">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeService.title}
+                initial={{ opacity: 0, scale: 0.95, y: 10 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 1.05, y: -10 }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                className="relative bg-[#EDE6DA]/40 rounded-[28px] border border-black/5 p-4 md:p-5 shadow-sm overflow-hidden h-full min-h-[720px]"
+              >
+                <PremiumVisual
+                  badge={activeService.badge}
+                  title={activeService.heading}
+                  description={activeService.visualDescription}
+                />
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </div>
       </div>
     </section>

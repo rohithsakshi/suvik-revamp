@@ -117,7 +117,7 @@ export function Footer() {
   };
 
   return (
-    <section className="relative z-10" style={{ background: '#EDE6DA' }}>
+    <section className="relative z-10" style={{ background: '#EDE6DA', isolation: 'isolate' }}>
       {/* ── CTA Card ── */}
       <div className="container mx-auto px-6 md:px-12 pb-0 pt-20">
         <motion.div
@@ -130,7 +130,6 @@ export function Footer() {
             rotateX, 
             rotateY, 
             perspective: "1500px",
-            transformStyle: "preserve-3d"
           }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           className="relative rounded-[2rem] overflow-hidden transform-gpu"
@@ -149,18 +148,18 @@ export function Footer() {
             className="absolute top-0 right-0 w-64 h-64 rounded-full pointer-events-none"
             style={{ 
               background: 'radial-gradient(circle, rgba(224,185,122,0.12) 0%, transparent 70%)', 
-              transform: 'translate(40%, -40%) translateZ(40px)' 
+              transform: 'translate(40%, -40%)' 
             }} 
           />
           <motion.div 
             className="absolute bottom-0 left-0 w-40 h-40 rounded-full pointer-events-none"
             style={{ 
               background: 'radial-gradient(circle, rgba(224,185,122,0.07) 0%, transparent 70%)', 
-              transform: 'translate(-30%, 30%) translateZ(20px)' 
+              transform: 'translate(-30%, 30%)' 
             }} 
           />
 
-          <div className="relative z-10 px-8 md:px-16 py-14 flex flex-col md:flex-row md:items-center md:justify-between gap-10 transform-gpu" style={{ transform: "translateZ(30px)" }}>
+          <div className="relative z-10 px-8 md:px-16 py-14 flex flex-col md:flex-row md:items-center md:justify-between gap-10">
             <div className="max-w-xl overflow-hidden">
               <motion.div
                 initial={{ y: "100%", opacity: 0 }}
@@ -185,7 +184,7 @@ export function Footer() {
               initial={{ opacity: 0, scale: 0.92 }}
               animate={ctaInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}
-              whileHover={{ scale: 1.05, translateZ: "40px" }}
+              whileHover={{ scale: 1.05 }}
               className="transform-gpu inline-block"
             >
               <Link

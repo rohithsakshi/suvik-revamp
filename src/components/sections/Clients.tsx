@@ -1,174 +1,156 @@
 "use client";
 
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
-import { useRef } from "react";
+import { SectionReveal, CinematicLine } from "@/components/common/SectionReveal";
+import Carousel from "@/components/ui/Carousel/Carousel";
+import FlowArc from "@/components/common/FlowArc";
 
-const clients = [
+const clientItems = [
   {
-    logo: "/lawblocks.png",
-    name: "LawBlocks",
-    category: "Blockchain & Legal",
-    description: "Enterprise Legal Tech Infrastructure",
+    id: 1,
+    title: "LawBlocks",
+    description: "Legal Tech & Blockchain Integration",
+    icon: <div className="relative w-16 h-16"><Image src="/lawblocks.png" alt="LawBlocks" fill className="object-contain grayscale invert hover:grayscale-0 hover:invert-0 transition-all duration-700" /></div>
   },
   {
-    logo: "/comtech.png",
-    name: "Comtech Gold",
-    category: "Fintech / RWA",
-    description: "Gold-backed Digital Assets",
+    id: 2,
+    title: "Comtech Gold",
+    description: "Fintech & Digitizing Real World Assets",
+    icon: <div className="relative w-16 h-16 group/logo"><Image src="/comtech.png" alt="Comtech Gold" fill className="object-contain grayscale invert group-hover/logo:grayscale-0 group-hover/logo:invert-0 transition-all duration-700" /></div>
   },
   {
-    logo: "/equitedge.png",
-    name: "EquitEdge",
-    category: "Digital Assets",
-    description: "Premium Digital Investment Platform",
+    id: 3,
+    title: "EquitEdge",
+    description: "Elite Digital Asset Management",
+    icon: <div className="relative w-16 h-16 group/logo"><Image src="/equitedge.png" alt="EquitEdge" fill className="object-contain grayscale invert group-hover/logo:grayscale-0 group-hover/logo:invert-0 transition-all duration-700" /></div>
   },
   {
-    logo: "/plugin-logo.png",
-    name: "Plugin",
-    category: "Blockchain Infrastructure",
-    description: "Decentralized Oracle Solutions",
+    id: 4,
+    title: "Plugin",
+    description: "Decentralized Oracle Infrastructure",
+    icon: <div className="relative w-16 h-16 group/logo"><Image src="/plugin-logo.png" alt="Plugin" fill className="object-contain grayscale invert group-hover/logo:grayscale-0 group-hover/logo:invert-0 transition-all duration-700" /></div>
   },
   {
-    logo: "/xdc-org.png",
-    name: "XDC Foundation",
-    category: "Layer 1 Blockchain",
-    description: "Enterprise-grade Hybrid Blockchain",
+    id: 5,
+    title: "XDC Foundation",
+    description: "Global Blockchain Network Support",
+    icon: <div className="relative w-16 h-16 group/logo"><Image src="/xdc-org.png" alt="XDC Foundation" fill className="object-contain grayscale invert group-hover/logo:grayscale-0 group-hover/logo:invert-0 group-hover/logo:sepia-[0.5] group-hover/logo:hue-rotate-[180deg] group-hover/logo:saturate-[200%] transition-all duration-700" /></div>
   },
   {
-    logo: "/doc-free.png",
-    name: "Docufree",
-    category: "Document Solutions",
-    description: "Corporate Document Management",
+    id: 6,
+    title: "Docufree",
+    description: "Enterprise Document Solutions",
+    icon: <div className="relative w-16 h-16 group/logo"><Image src="/doc-free.png" alt="Docufree" fill className="object-contain grayscale invert group-hover/logo:grayscale-0 group-hover/logo:invert-0 transition-all duration-700" /></div>
   },
   {
-    logo: "/shoe-technology.png",
-    name: "SHOE Technology",
-    category: "IT Solutions",
-    description: "Industrial Tech & Automation",
+    id: 7,
+    title: "SHOE Technology",
+    description: "Innovative IT Infrastructure",
+    icon: <div className="relative w-16 h-16 group/logo"><Image src="/shoe-technology.png" alt="SHOE Technology" fill className="object-contain grayscale invert group-hover/logo:grayscale-0 group-hover/logo:invert-0 group-hover/logo:brightness-[1.2] transition-all duration-700" /></div>
   },
   {
-    logo: "/tathmeer-logo.png",
-    name: "Tathmeer",
-    category: "Fintech / UAE",
-    description: "Strategic Financial Consulting",
-  },
+    id: 8,
+    title: "Tathmeer",
+    description: "Strategic Fintech Growth in UAE",
+    icon: <div className="relative w-16 h-16 group/logo"><Image src="/tathmeer-logo.png" alt="Tathmeer" fill className="object-contain grayscale invert group-hover/logo:grayscale-0 group-hover/logo:invert-0 transition-all duration-700" /></div>
+  }
 ];
 
 export function Clients() {
   return (
-    // Background #FCF9F5 — set by ArchPanel in page.tsx
-    <section className="relative py-20 md:py-24 overflow-hidden">
+    <section className="relative py-24 md:py-32 bg-[#EDE6DA] overflow-hidden">
+      {/* 🌀 BACKGROUND ELEMENTS */}
+      <div className="absolute inset-0 z-0">
+        <FlowArc />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[600px] bg-gold/5 blur-[120px] rounded-full pointer-events-none" />
+      </div>
 
-      {/* HEADER */}
-      <div className="container mx-auto px-6 md:px-12 relative z-10 mb-14">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center"
-        >
-          <div className="flex items-center justify-center gap-3 mb-5">
-            <div className="w-6 h-px bg-[#C9A96E] opacity-50" />
-            <div className="text-[10px] font-bold uppercase tracking-[0.42em] text-[#C9A96E]">
-              Strategic Partnerships
-            </div>
-            <div className="w-6 h-px bg-[#C9A96E] opacity-50" />
+      <div className="container mx-auto px-6 md:px-12 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center max-w-6xl mx-auto">
+          
+          {/* LEFT CONTENT: THE STRATEGIC PARAGRAPH */}
+          <div className="max-w-xl">
+            <SectionReveal>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-8 h-px bg-[#C9A96E] opacity-50" />
+                <div className="text-[11px] font-bold uppercase tracking-[0.42em] text-[#C9A96E]">
+                  Our Ecosystem
+                </div>
+              </div>
+
+              <h2 className="text-4xl md:text-5xl font-semibold text-[#1A1A1A] tracking-tight leading-tight mb-8">
+                Building Success via <span className="text-gold">Strategic</span> Alliances
+              </h2>
+
+              <div className="space-y-6 text-lg text-charcoal/70 font-light leading-relaxed">
+                <p>
+                  At <span className="font-medium text-charcoal">Suvik Group</span>, we believe that extraordinary growth is the result of focused, strategic partnerships. Our client ecosystem comprises industry leaders in <span className="text-gold font-medium">Blockchain, Fintech, and Enterprise Legal Tech</span>.
+                </p>
+                <p>
+                  We don&apos;t just provide services; we build long-term value. By aligning with organizations that share our vision for technological excellence and market decisiveness, we ensure that every venture is built on a foundation of professional integrity and global scale.
+                </p>
+                <div className="pt-6 flex items-center gap-6">
+                   <div className="flex flex-col">
+                      <span className="text-2xl font-bold text-charcoal tracking-tight">200+</span>
+                      <span className="text-[9px] uppercase tracking-widest text-charcoal/40 font-bold">Successful Launches</span>
+                   </div>
+                   <div className="w-px h-10 bg-charcoal/10" />
+                   <div className="flex flex-col">
+                      <span className="text-2xl font-bold text-charcoal tracking-tight">12+</span>
+                      <span className="text-[9px] uppercase tracking-widest text-charcoal/40 font-bold">Years of Trust</span>
+                   </div>
+                </div>
+              </div>
+            </SectionReveal>
           </div>
 
-          <h2 className="text-4xl md:text-5xl xl:text-6xl font-semibold text-[#1A1A1A] tracking-tight leading-tight">
-            Trusted by Industry{" "}
-            <span className="text-[#C9A96E]">Leaders</span>
-          </h2>
+          {/* RIGHT CONTENT: THE REACT BITS CAROUSEL */}
+          <div className="flex justify-center lg:justify-end items-center relative py-10">
+             {/* Architectural Frame for the Carousel */}
+             <motion.div 
+               initial={{ opacity: 0, x: 50 }}
+               whileInView={{ opacity: 1, x: 0 }}
+               transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+               className="relative"
+             >
+                <div className="absolute inset-0 bg-gold/5 blur-[80px] rounded-full scale-150 -z-10" />
+                <Carousel 
+                  items={clientItems}
+                  baseWidth={400}
+                  autoplay={true}
+                  autoplayDelay={4500}
+                  pauseOnHover={true}
+                  loop={true}
+                  round={true}
+                />
+             </motion.div>
+          </div>
+
+        </div>
+
+        {/* BOTTOM METRICS BAR */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.5 }}
+          className="mt-24 pt-10 border-t border-charcoal/10 flex flex-col md:flex-row justify-between items-center gap-6"
+        >
+          <div className="text-[10px] font-medium text-black/30 uppercase tracking-[0.35em]">
+            Corporate Excellence Since 2011 — UAE & Beyond
+          </div>
+          <div className="flex gap-8 items-center">
+            <div className="flex items-center gap-2">
+              <div className="w-1.5 h-1.5 rounded-full bg-gold" />
+              <span className="text-[9px] font-bold text-black/40 uppercase tracking-widest">Digital Leaders</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-1.5 h-1.5 rounded-full bg-gold/50" />
+              <span className="text-[9px] font-bold text-black/40 uppercase tracking-widest">Global Reach</span>
+            </div>
+          </div>
         </motion.div>
       </div>
-
-      {/* MARQUEE */}
-      <div className="relative w-full flex items-center justify-center overflow-hidden h-[360px] md:h-[380px]">
-        {/* Fades */}
-        <div className="absolute left-0 top-0 bottom-0 w-24 md:w-64 bg-gradient-to-r from-[#EDE6DA] via-[#EDE6DA]/85 to-transparent z-40 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-24 md:w-64 bg-gradient-to-l from-[#EDE6DA] via-[#EDE6DA]/85 to-transparent z-40 pointer-events-none" />
-
-        <div className="flex w-full overflow-hidden">
-          <motion.div
-            className="flex gap-10 md:gap-12 py-6 px-6"
-            animate={{ x: [0, -1800] }}
-            transition={{ duration: 38, repeat: Infinity, ease: "linear" }}
-          >
-            {[...clients, ...clients, ...clients].map((client, index) => (
-              <ClientCard key={`${client.name}-${index}`} client={client} />
-            ))}
-          </motion.div>
-        </div>
-      </div>
     </section>
-  );
-}
-
-function ClientCard({ client }: { client: typeof clients[0] }) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  
-  // Mouse interaction for tilt
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [10, -10]), { stiffness: 100, damping: 20 });
-  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-10, 10]), { stiffness: 100, damping: 20 });
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    const rect = cardRef.current?.getBoundingClientRect();
-    if (!rect) return;
-    x.set((e.clientX - rect.left) / rect.width - 0.5);
-    y.set((e.clientY - rect.top) / rect.height - 0.5);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
-
-  return (
-    <motion.div
-      ref={cardRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      initial={{ opacity: 0.7, scale: 0.9, translateZ: -20 }}
-      whileInView={{ opacity: 1, scale: 1, translateZ: 0, transition: { duration: 0.6 } }}
-      viewport={{ margin: "-20%" }}
-      className="flex-shrink-0 group relative"
-      style={{ perspective: "1000px" }}
-    >
-      <div className="absolute inset-0 bg-[#C9A96E]/5 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-
-      <motion.div 
-        style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-        className="w-[240px] md:w-[280px] bg-[#F5F1EA] rounded-[28px] p-6 md:p-7 border border-black/5 shadow-[0_12px_40px_rgba(0,0,0,0.02)] flex flex-col items-center text-center transition-all duration-500 hover:border-[#C9A96E]/30 hover:shadow-[0_25px_60px_rgba(201,169,110,0.12)] relative z-10 transform-gpu"
-      >
-
-        {/* Logo */}
-        <div 
-          className="w-28 h-16 relative mb-6 transition-all duration-700 grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transform-gpu"
-          style={{ transform: "translateZ(30px)" }}
-        >
-          <Image src={client.logo} alt={client.name} fill className="object-contain" />
-        </div>
-
-        <div style={{ transform: "translateZ(15px)" }} className="transform-gpu">
-          <h3 className="text-lg md:text-xl font-semibold text-[#1A1A1A] mb-1">
-            {client.name}
-          </h3>
-
-          <p className="text-[#C9A96E] text-[10px] font-bold uppercase tracking-[0.18em] mb-5">
-            {client.category}
-          </p>
-
-          <div className="pt-5 border-t border-black/5">
-            <span className="text-[9px] font-medium uppercase tracking-[0.22em] text-black/35">
-              Strategic Partner
-            </span>
-          </div>
-        </div>
-      </motion.div>
-    </motion.div>
   );
 }

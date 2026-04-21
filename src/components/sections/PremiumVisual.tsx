@@ -1,8 +1,7 @@
 "use client";
 
-import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
-import { useRef } from "react";
 
 type PremiumVisualProps = {
   badge: string;
@@ -15,100 +14,63 @@ export function PremiumVisual({
   title,
   description,
 }: PremiumVisualProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  
-  // Mouse Reactive Parallax
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const springX = useSpring(mouseX, { stiffness: 100, damping: 30 });
-  const springY = useSpring(mouseY, { stiffness: 100, damping: 30 });
-
-  const moveX = useTransform(springX, [-0.5, 0.5], [-15, 15]);
-  const moveY = useTransform(springY, [-0.5, 0.5], [-15, 15]);
-  const skyMoveX = useTransform(springX, [-0.5, 0.5], [10, -10]);
-  const skyMoveY = useTransform(springY, [-0.5, 0.5], [5, -5]);
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    const rect = containerRef.current?.getBoundingClientRect();
-    if (!rect) return;
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    mouseX.set(x);
-    mouseY.set(y);
-  };
-
-  const handleMouseLeave = () => {
-    mouseX.set(0);
-    mouseY.set(0);
-  };
-
   return (
     <div 
-      ref={containerRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      className="relative h-[520px] md:h-[620px] rounded-[30px] overflow-hidden bg-[#EDE6DA] border border-black/5 flex items-center justify-center shadow-[inset_0_0_100px_rgba(201,169,110,0.03)] group"
-      style={{ perspective: "1200px" }}
+      className="relative h-[520px] md:h-[620px] rounded-[30px] overflow-hidden bg-[#EDE6DA] border border-black/5 flex items-center justify-center shadow-lg group"
     >
-      {/* Architectural Glow Layers */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-[#E0B97A]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-
-      {/* Soft luxury glow */}
-      <motion.div
-        animate={{
-          scale: [1, 1.04, 1],
-          opacity: [0.12, 0.18, 0.12],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute w-[500px] h-[500px] rounded-full bg-[#E0B97A]/10 blur-[120px]"
+      {/* Background flare */}
+      <motion.div 
+        animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute inset-0 bg-gradient-to-tr from-[#E0B97A]/10 via-transparent to-transparent" 
       />
 
-      {/* Dubai skyline — clean transparent subtle background */}
+      {/* Dubai skyline — subtle ambient motion */}
       <motion.div 
-        style={{ x: skyMoveX, y: skyMoveY, translateZ: "-50px" }}
-        className="absolute inset-0 z-0 flex items-end justify-center pointer-events-none transform-gpu"
+        animate={{ y: [0, -10, 0], scale: [1, 1.02, 1] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute inset-0 z-0 flex items-end justify-center pointer-events-none"
       >
-        <Image
-          src="/dubai-silhouete.png"
-          alt="Dubai Skyline"
-          width={1200}
-          height={500}
-          priority
-          className="
-            w-full
-            h-auto
-            object-contain
-            opacity-[0.22]
-            brightness-75
-            contrast-125
-            grayscale
-            select-none
-          "
-        />
+        <div className="relative w-full h-[60%] opacity-[0.2] grayscale transform translate-y-10">
+          <Image
+            src="/dubai-silhouete.png"
+            alt="Dubai Skyline"
+            fill
+            priority
+            className="object-contain"
+          />
+        </div>
       </motion.div>
 
-      {/* Elegant subtle rings only */}
-      <motion.div style={{ x: moveX, y: moveY, rotate: 15, translateZ: "-20px" }} className="absolute w-[560px] h-[560px] rounded-full border border-[#E0B97A]/10 z-0 transform-gpu" />
-      <motion.div style={{ x: useTransform(moveX, (v) => v * 1.5), y: useTransform(moveY, (v) => v * 1.5), rotate: -10, translateZ: "-40px" }} className="absolute w-[420px] h-[420px] rounded-full border border-[#E0B97A]/10 z-0 transform-gpu" />
-      <motion.div style={{ x: useTransform(moveX, (v) => v * 0.5), y: useTransform(moveY, (v) => v * 0.5), rotate: 45, translateZ: "-10px" }} className="absolute w-[300px] h-[300px] rounded-full border border-[#E0B97A]/10 z-0 transform-gpu" />
+      {/* Static depth rings */}
+      <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
+         <motion.div 
+           animate={{ rotate: 360 }}
+           transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+           className="w-[500px] h-[500px] border border-gold/5 rounded-full" 
+         />
+         <motion.div 
+           animate={{ rotate: -360 }}
+           transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
+           className="absolute w-[400px] h-[400px] border border-gold/5 rounded-full" 
+         />
+      </div>
 
-      {/* Dynamic content */}
-      <motion.div
-        key={title}
-        initial={{ opacity: 0, y: 18, translateZ: 0 }}
-        animate={{ opacity: 1, y: 0, translateZ: "40px" }}
-        style={{ x: useTransform(moveX, (v) => v * -0.5), y: useTransform(moveY, (v) => v * -0.5), transformStyle: "preserve-3d" }}
-        transition={{ duration: 0.5 }}
-        className="relative z-20 text-center px-8 max-w-xl transform-gpu"
+      {/* Content Entry */}
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="relative z-20 text-center px-8 max-w-xl"
       >
-        <p className="text-[11px] uppercase tracking-[0.38em] text-[#E0B97A] mb-5 font-medium">
+        <motion.p 
+          initial={{ letterSpacing: "0.1em" }}
+          animate={{ letterSpacing: "0.38em" }}
+          transition={{ duration: 1.5 }}
+          className="text-[11px] uppercase text-[#E0B97A] mb-5 font-medium"
+        >
           {badge}
-        </p>
+        </motion.p>
 
         <h3 className="text-4xl md:text-5xl font-semibold text-[#1A1A1A] leading-tight mb-5 drop-shadow-sm">
           {title}
@@ -123,4 +85,4 @@ export function PremiumVisual({
       <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#EDE6DA] to-transparent z-10 pointer-events-none" />
     </div>
   );
-}
+}

@@ -3,8 +3,8 @@ import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { SmoothScrollProvider } from "@/components/layout/SmoothScrollProvider";
 import Loader from "@/components/common/Loader";
+import { SmoothScrollProvider } from "@/components/layout/SmoothScrollProvider";
 
 const space = Space_Grotesk({
   subsets: ["latin"],
@@ -24,16 +24,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      {/*
-        overflow:hidden on html prevents any scroll flash before
-        the loader JS runs on the client.
-      */}
       <body
         className={`${space.variable} antialiased bg-background text-foreground min-h-screen`}
+        suppressHydrationWarning
       >
-        <Loader />
-        <Navbar />
         <SmoothScrollProvider>
+          <Loader />
+          <Navbar />
           <main className="w-full">{children}</main>
           <Footer />
         </SmoothScrollProvider>

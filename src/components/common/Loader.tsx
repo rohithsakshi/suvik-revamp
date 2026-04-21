@@ -4,80 +4,66 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
-export default function Loader({ onFinish }: { onFinish?: () => void }) {
+export default function Loader() {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
+    // Basic timer to hide loader
     const timer = setTimeout(() => {
       setIsVisible(false);
-      setTimeout(() => {
-        // Restore scroll, pin to top, then hand off
-        document.body.style.overflow = "";
-        document.documentElement.style.overflow = "";
-        window.scrollTo({ top: 0, behavior: "instant" });
-        onFinish?.();
-      }, 500);
-    }, 900);
+    }, 1200);
 
-    return () => {
-      clearTimeout(timer);
-      document.body.style.overflow = "";
-      document.documentElement.style.overflow = "";
-    };
-  }, [onFinish]);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <AnimatePresence>
       {isVisible && (
         <motion.div
           initial={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.8, ease: [0.43, 0.13, 0.23, 0.96] }}
-          className="fixed inset-0 z-[10000] bg-[#EDE6DA] flex items-center justify-center overflow-hidden"
+          exit={{ 
+            opacity: 0,
+            transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] }
+          }}
+          className={`fixed inset-0 z-[10000] bg-[#EDE6DA] flex items-center justify-center ${!isVisible ? 'pointer-events-none' : ''}`}
         >
-          {/* CENTERED LOGO ANIMATION */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 10 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            className="relative flex flex-col items-center gap-10"
-          >
-            <div className="relative">
+          <div className="relative flex flex-col items-center gap-12">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              className="relative"
+            >
               <Image
                 src="/logo.png"
                 alt="Suvik"
-                width={200}
-                height={60}
+                width={220}
+                height={66}
                 priority
                 className="h-auto w-auto object-contain"
               />
-
-              {/* SHIMMER LINE */}
-              <motion.div
-                initial={{ opacity: 0, width: 0 }}
-                animate={{ opacity: 1, width: "100%" }}
-                transition={{ delay: 0.4, duration: 1.5, ease: "easeInOut" }}
-                className="absolute -bottom-6 left-0 h-[1px] bg-gradient-to-r from-transparent via-gold/40 to-transparent"
+              {/* Subtle shimmer bar */}
+              <motion.div 
+                initial={{ left: "-100%" }}
+                animate={{ left: "100%" }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute bottom-0 left-0 h-[1px] w-full bg-gradient-to-r from-transparent via-gold to-transparent opacity-30"
               />
-            </div>
-
-            <motion.p
+            </motion.div>
+            
+            <motion.div
               initial={{ opacity: 0 }}
-              animate={{ opacity: 0.4 }}
-              transition={{ delay: 0.8, duration: 1 }}
-              className="text-[9px] font-bold uppercase tracking-[0.4em] text-charcoal/60"
+              animate={{ opacity: 0.6 }}
+              transition={{ delay: 0.4, duration: 1 }}
+              className="flex items-center gap-4"
             >
-              Establishing Excellence
-            </motion.p>
-          </motion.div>
-
-          {/* AMBIENT GLOW */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 2 }}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gold/5 blur-[120px] rounded-full pointer-events-none"
-          />
+              <div className="h-px w-8 bg-charcoal/20" />
+              <p className="text-[10px] font-bold uppercase tracking-[0.5em] text-charcoal">
+                Establishing Excellence
+              </p>
+              <div className="h-px w-8 bg-charcoal/20" />
+            </motion.div>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>

@@ -1,17 +1,10 @@
 "use client";
 
-import { useRef, useEffect, useState, ReactNode } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { motion } from "framer-motion";
+import { ReactNode } from "react";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// SectionReveal
-//
-// Used INSIDE sections for individual content blocks. The panel itself
-// (ArchPanel in page.tsx) handles the macro scene arrival. SectionReveal
-// handles the micro — individual cards, headlines, images within the scene.
-//
-// Intentionally subtle: the panel arrival is the statement.
-// Content reveal is the refinement.
+// SectionReveal - 80'S CINEMATIC VERSION
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function SectionReveal({
@@ -25,34 +18,15 @@ export function SectionReveal({
   delay?: number;
   style?: React.CSSProperties;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [inView, setInView] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.12 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 32 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{
-        duration: 0.9,
-        delay,
-        ease: [0.16, 1, 0.3, 1],
+      initial={{ opacity: 0, y: 40, scale: 1.05 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ 
+        duration: 1.8,  // Slow, cinematic entry
+        delay, 
+        ease: [0.19, 1, 0.22, 1] 
       }}
       className={className}
       style={style}
@@ -63,8 +37,7 @@ export function SectionReveal({
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// CinematicLine — single line text reveal from below (masked)
-// Premium typography entrance. Used for section headlines.
+// CinematicLine - For elegant text reveals
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function CinematicLine({
@@ -78,34 +51,16 @@ export function CinematicLine({
   delay?: number;
   style?: React.CSSProperties;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [inView, setInView] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.15 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <div ref={ref} className={`overflow-hidden ${className}`} style={style}>
+    <div className={`overflow-hidden ${className}`} style={style}>
       <motion.div
-        initial={{ y: "108%", opacity: 0 }}
-        animate={inView ? { y: "0%", opacity: 1 } : {}}
-        transition={{
-          duration: 1.05,
-          delay,
-          ease: [0.16, 1, 0.3, 1],
+        initial={{ y: "100%" }}
+        whileInView={{ y: 0 }}
+        viewport={{ once: true, margin: "0px" }}
+        transition={{ 
+          duration: 1.5,  // Slower text reveal
+          delay, 
+          ease: [0.16, 1, 0.3, 1] 
         }}
       >
         {children}
@@ -115,14 +70,13 @@ export function CinematicLine({
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// StaggerReveal — reveals children with sequential delay
-// For lists, card grids, stat rows.
+// StaggerReveal - For lists and grids
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function StaggerReveal({
   children,
   className = "",
-  stagger = 0.08,
+  stagger = 0.15,
   baseDelay = 0,
   style,
 }: {
@@ -132,33 +86,15 @@ export function StaggerReveal({
   baseDelay?: number;
   style?: React.CSSProperties;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [inView, setInView] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <motion.div
-      ref={ref}
       initial="hidden"
-      animate={inView ? "visible" : "hidden"}
+      whileInView="visible"
+      viewport={{ once: true, margin: "0px" }}
       variants={{
-        hidden: {},
+        hidden: { opacity: 0 },
         visible: {
+          opacity: 1,
           transition: {
             staggerChildren: stagger,
             delayChildren: baseDelay,
@@ -173,7 +109,6 @@ export function StaggerReveal({
   );
 }
 
-// Child item for StaggerReveal
 export function StaggerItem({
   children,
   className = "",
@@ -186,11 +121,12 @@ export function StaggerItem({
   return (
     <motion.div
       variants={{
-        hidden: { opacity: 0, y: 28 },
-        visible: {
-          opacity: 1,
+        hidden: { opacity: 0, y: 30, scale: 1.02 },
+        visible: { 
+          opacity: 1, 
           y: 0,
-          transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+          scale: 1,
+          transition: { duration: 1.2, ease: [0.19, 1, 0.22, 1] }
         },
       }}
       className={className}
@@ -202,29 +138,24 @@ export function StaggerItem({
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// ScrollParallax — subtle depth layer for decorative elements
+// ScrollParallax - Glacial movement
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function ScrollParallax({
   children,
-  speed = 0.3,
   className = "",
+  speed = 0.05,
 }: {
   children: ReactNode;
   speed?: number;
   className?: string;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [`${-speed * 60}px`, `${speed * 60}px`]);
-
   return (
-    <motion.div ref={ref} style={{ y }} className={className}>
+    <motion.div
+      whileInView={{ y: [-15 * speed, 15 * speed] }}
+      transition={{ duration: 15, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
+      className={className}
+    >
       {children}
     </motion.div>
   );
