@@ -56,32 +56,32 @@ export function Hero() {
             Welcome to
           </motion.span>
           
-          <h1 className="text-5xl md:text-[5.5rem] lg:text-[7rem] flex flex-col items-center tracking-tight leading-[1.02]">
+          <h1 className="text-[2.75rem] sm:text-5xl md:text-[5.5rem] lg:text-[7rem] flex flex-col items-center tracking-tight leading-[1.02]">
             <CinematicLine><span className="font-extrabold text-charcoal">Suvik Group</span></CinematicLine>
-            <CinematicLine delay={0.2}><span className="font-light text-charcoal/60 -mt-2 italic">Of Companies</span></CinematicLine>
+            <CinematicLine delay={0.2}><span className="font-light text-charcoal/60 -mt-1 md:-mt-2 italic">Of Companies</span></CinematicLine>
           </h1>
         </div>
 
         {/* SUBTEXT */}
-        <SectionReveal delay={0.4} className="mb-14 max-w-2xl text-center">
-          <p className="text-lg md:text-xl text-charcoal/60 leading-relaxed font-light tracking-wide">
+        <SectionReveal delay={0.4} className="mb-10 md:mb-14 max-w-2xl text-center">
+          <p className="text-base md:text-xl text-charcoal/60 leading-relaxed font-light tracking-wide px-4 md:px-0">
             Headquartered in the United Arab Emirates, we transform ideas into structured growth through elite business formation and technological excellence.
           </p>
         </SectionReveal>
 
         {/* CTA BUTTONS */}
-        <StaggerReveal baseDelay={0.6} stagger={0.15} className="flex flex-col sm:flex-row gap-5 mb-16 justify-center">
-          <StaggerItem>
-            <Link href="/contact">
-              <Button variant="gold" className="px-10 py-7 text-[11px] tracking-[0.25em] shadow-[0_15px_35px_rgba(212,175,55,0.2)]">
+        <StaggerReveal baseDelay={0.6} stagger={0.15} className="flex flex-col sm:flex-row gap-4 md:gap-5 mb-12 md:mb-16 justify-center w-full sm:w-auto px-6 sm:px-0">
+          <StaggerItem className="w-full sm:w-auto">
+            <Link href="/contact" className="w-full">
+              <Button variant="gold" className="w-full sm:w-auto px-8 md:px-10 py-6 md:py-7 text-[10px] md:text-[11px] tracking-[0.25em] shadow-[0_15px_35px_rgba(212,175,55,0.2)]">
                 Start Your Business
               </Button>
             </Link>
           </StaggerItem>
 
-          <StaggerItem>
-            <Link href="/services">
-              <Button variant="outline" className="px-10 py-7 text-[11px] tracking-[0.25em] border-charcoal/10 bg-white/50 backdrop-blur-sm hover:shadow-lg transition-shadow">
+          <StaggerItem className="w-full sm:w-auto">
+            <Link href="/services" className="w-full">
+              <Button variant="outline" className="w-full sm:w-auto px-8 md:px-10 py-6 md:py-7 text-[10px] md:text-[11px] tracking-[0.25em] border-charcoal/10 bg-white/50 backdrop-blur-sm hover:shadow-lg transition-shadow">
                 Explore Services
               </Button>
             </Link>
@@ -89,19 +89,19 @@ export function Hero() {
         </StaggerReveal>
 
         {/* TRUST METRICS */}
-        <StaggerReveal baseDelay={1} stagger={0.1} className="flex flex-wrap justify-center gap-x-12 gap-y-6 pt-10 border-t border-charcoal/10 text-[10px] font-bold uppercase tracking-[0.3em] text-charcoal/50">
+        <StaggerReveal baseDelay={1} stagger={0.1} className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-x-12 gap-y-4 pt-10 border-t border-charcoal/10 text-[9px] md:text-[10px] font-bold uppercase tracking-[0.25em] md:tracking-[0.3em] text-charcoal/50">
           <StaggerItem className="flex items-center gap-3">
-            <Check className="w-4 h-4 text-gold stroke-[3]" />
+            <Check className="w-3.5 h-3.5 md:w-4 h-4 text-gold stroke-[3]" />
             100+ Businesses Launched
           </StaggerItem>
 
           <StaggerItem className="flex items-center gap-3">
-            <Check className="w-4 h-4 text-gold stroke-[3]" />
+            <Check className="w-3.5 h-3.5 md:w-4 h-4 text-gold stroke-[3]" />
             UAE Market Experts
           </StaggerItem>
 
-          <StaggerItem className="flex items-center gap-3 md:hidden lg:flex">
-            <Check className="w-4 h-4 text-gold stroke-[3]" />
+          <StaggerItem className="flex items-center gap-3 sm:hidden lg:flex">
+            <Check className="w-3.5 h-3.5 md:w-4 h-4 text-gold stroke-[3]" />
             End-to-End Solutions
           </StaggerItem>
         </StaggerReveal>

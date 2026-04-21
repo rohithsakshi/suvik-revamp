@@ -53,7 +53,7 @@ export function WhyChooseUs() {
                 <span className="text-[10px] font-bold uppercase tracking-[0.45em] text-[#C9A96E]">Strategy & Growth</span>
               </div>
 
-              <h2 className="text-5xl md:text-7xl font-semibold text-charcoal mb-12 leading-[1.05] tracking-tight">
+              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-charcoal mb-8 md:mb-12 leading-[1.05] tracking-tight">
                 <CinematicLine>Doing the right thing,</CinematicLine>
                 <CinematicLine delay={0.1}><span className="text-[#C9A96E] italic font-light drop-shadow-sm">at the right time.</span></CinematicLine>
               </h2>
@@ -123,7 +123,7 @@ export function WhyChooseUs() {
                       scale: 1.02,
                       transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] }
                     }}
-                    className={`relative p-10 bg-white/60 backdrop-blur-xl border border-charcoal/5 rounded-[32px] group overflow-hidden transition-all duration-700 shadow-sm hover:shadow-xl hover:border-gold/30 ${
+                    className={`relative p-8 md:p-10 bg-white/60 backdrop-blur-xl border border-charcoal/5 rounded-[24px] md:rounded-[32px] group overflow-hidden transition-all duration-700 shadow-sm hover:shadow-xl hover:border-gold/30 ${
                       i % 2 !== 0 ? "lg:mt-12" : ""
                     }`}
                   >

@@ -31,9 +31,8 @@ function StaticPanel({
       id={id}
       style={{
         backgroundColor: bg,
-        borderRadius: roundedTop ? "40px 40px 0 0" : undefined,
       }}
-      className="relative w-full"
+      className={`relative w-full ${roundedTop ? "rounded-t-[32px] md:rounded-t-[40px]" : ""}`}
     >
       {children}
     </div>
@@ -46,9 +45,8 @@ function DarkStaticPanel({ children, id }: { children: React.ReactNode; id?: str
       id={id}
       style={{
         backgroundColor: "#1A1A1A",
-        borderRadius: "40px 40px 0 0",
       }}
-      className="relative w-full"
+      className="relative w-full rounded-t-[32px] md:rounded-t-[40px]"
     >
       {children}
     </div>

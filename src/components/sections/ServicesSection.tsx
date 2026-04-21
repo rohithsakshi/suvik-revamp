@@ -163,7 +163,7 @@ export function ServicesSection() {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 1.05, y: -10 }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="relative bg-[#EDE6DA]/40 rounded-[28px] border border-black/5 p-4 md:p-5 shadow-sm overflow-hidden h-full min-h-[720px]"
+                className="relative bg-[#EDE6DA]/40 rounded-[24px] md:rounded-[28px] border border-black/5 p-4 md:p-5 shadow-sm overflow-hidden h-full min-h-[400px] md:min-h-[720px]"
               >
                 <PremiumVisual
                   badge={activeService.badge}

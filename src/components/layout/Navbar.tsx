@@ -82,14 +82,14 @@ export function Navbar() {
             <div className="h-4 w-px bg-charcoal/5 mx-1 hidden md:block" />
 
             {/* CTA */}
-            <Link href="/contact" className="hidden md:block">
+            <Link href="/contact" className="hidden sm:block">
               <motion.button 
                 animate={{
                   scale: isScrolled ? 0.95 : 1,
-                  paddingLeft: isScrolled ? "1.25rem" : "1.5rem",
-                  paddingRight: isScrolled ? "1.25rem" : "1.5rem",
+                  paddingLeft: isScrolled ? "1rem" : "1.25rem",
+                  paddingRight: isScrolled ? "1rem" : "1.25rem",
                 }}
-                className="py-2.5 rounded-full bg-charcoal text-white text-[9px] font-bold tracking-[0.25em] uppercase transition-all duration-500 hover:bg-gold"
+                className="py-2 rounded-full bg-charcoal text-white text-[8px] md:text-[9px] font-bold tracking-[0.2em] md:tracking-[0.25em] uppercase transition-all duration-500 hover:bg-gold whitespace-nowrap"
               >
                 Contact
               </motion.button>
@@ -97,10 +97,10 @@ export function Navbar() {
 
             {/* MOBILE TOGGLE */}
             <button
-              className="md:hidden ml-1 text-charcoal hover:text-gold transition-colors duration-300"
+              className="md:hidden ml-2 p-2 text-charcoal hover:text-gold transition-colors duration-300"
               onClick={() => setMobileOpen(!mobileOpen)}
             >
-              <Menu size={16} />
+              <Menu size={18} />
             </button>
           </motion.nav>
         </div>
@@ -110,34 +110,72 @@ export function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
-            animate={{ opacity: 1, backdropFilter: "blur(20px)" }}
-            exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-[110] bg-[#EDE6DA]/90 flex flex-col items-center justify-center gap-10"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[110] bg-[#EDE6DA] flex flex-col"
           >
-            <button
-              className="absolute top-10 right-10 text-charcoal/60 hover:text-charcoal transition-colors duration-300"
-              onClick={() => setMobileOpen(false)}
-            >
-              <X size={32} strokeWidth={1} />
-            </button>
-            {navLinks.map((link, i) => (
-              <motion.div
-                key={link.name}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 + i * 0.1, duration: 0.5 }}
+            {/* Background elements for mobile menu */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+              <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[40%] bg-gold/5 blur-[100px] rounded-full" />
+              <div className="absolute bottom-[-5%] left-[-5%] w-[40%] h-[30%] bg-gold/5 blur-[80px] rounded-full" />
+            </div>
+
+            <div className="flex justify-between items-center px-8 py-8 relative z-10">
+              <Image src="/logo.png" alt="Suvik Logo" width={80} height={20} className="object-contain" />
+              <button
+                className="p-2 text-charcoal/60 hover:text-charcoal transition-colors duration-300"
+                onClick={() => setMobileOpen(false)}
               >
-                <Link
-                  href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="text-4xl md:text-5xl font-light tracking-tight text-charcoal hover:text-gold transition-colors duration-300"
+                <X size={24} strokeWidth={1.5} />
+              </button>
+            </div>
+
+            <div className="flex-1 flex flex-col justify-center px-10 gap-8 relative z-10">
+              <div className="flex flex-col gap-6">
+                <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-gold/60">Navigation</span>
+                {navLinks.map((link, i) => (
+                  <motion.div
+                    key={link.name}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.1 + i * 0.1, duration: 0.5 }}
+                  >
+                    <Link
+                      href={link.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="text-4xl font-light tracking-tight text-charcoal hover:text-gold transition-colors duration-300 block"
+                    >
+                      {link.name}
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
+
+              <div className="h-px w-full bg-charcoal/5 my-4" />
+
+              <div className="flex flex-col gap-6">
+                <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-gold/60">Connect</span>
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
                 >
-                  {link.name}
-                </Link>
-              </motion.div>
-            ))}
+                  <Link
+                    href="/contact"
+                    onClick={() => setMobileOpen(false)}
+                    className="inline-flex items-center gap-4 bg-charcoal text-white px-8 py-4 rounded-full text-[10px] font-bold uppercase tracking-[0.25em]"
+                  >
+                    Start Project
+                    <X size={14} className="rotate-45" />
+                  </Link>
+                </motion.div>
+              </div>
+            </div>
+
+            <div className="px-10 py-10 text-[9px] font-medium text-charcoal/30 uppercase tracking-widest relative z-10">
+              © 2026 Suvik Group — UAE
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

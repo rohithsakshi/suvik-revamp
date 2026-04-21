@@ -93,12 +93,12 @@ export function GlobalPresenceMap() {
           </h2>
         </SectionReveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-12 items-start">
 
           {/* MAP */}
           <SectionReveal
             delay={0.2}
-            className="lg:col-span-8 relative h-[420px] rounded-3xl overflow-hidden border border-white/5 bg-[rgba(255,255,255,0.02)] shadow-[inset_0_0_60px_rgba(0,0,0,0.2)]"
+            className="lg:col-span-8 relative h-[320px] md:h-[420px] rounded-2xl md:rounded-3xl overflow-hidden border border-white/5 bg-[rgba(255,255,255,0.02)] shadow-[inset_0_0_60px_rgba(0,0,0,0.2)]"
           >
             {/* Map image */}
             <div className="absolute inset-0 z-0">
@@ -118,7 +118,7 @@ export function GlobalPresenceMap() {
                 <button
                   key={loc.id}
                   style={{ left: loc.coords.left, top: loc.coords.top }}
-                  className="absolute -translate-x-1/2 -translate-y-1/2 group/marker z-30"
+                  className="absolute -translate-x-1/2 -translate-y-1/2 group/marker z-30 p-2"
                   onMouseEnter={() => setActiveLocation(loc)}
                   onClick={() => setActiveLocation(loc)}
                 >
@@ -127,7 +127,7 @@ export function GlobalPresenceMap() {
                       <motion.span 
                         animate={{ scale: [1, 1.8, 1], opacity: [0.1, 0.4, 0.1] }}
                         transition={{ duration: 3, repeat: Infinity }}
-                        className="absolute inset-0 w-10 h-10 -left-3.5 -top-3.5 rounded-full bg-[#C9A96E]" 
+                        className="absolute inset-0 w-8 h-8 -left-2.5 -top-2.5 md:w-10 md:h-10 md:-left-3.5 md:-top-3.5 rounded-full bg-[#C9A96E]" 
                       />
                     )}
                     <motion.div
@@ -136,8 +136,8 @@ export function GlobalPresenceMap() {
                         backgroundColor: loc.type === "primary" ? "#C9A96E" : activeLocation.id === loc.id ? "#C9A96E" : "#64748b",
                       }}
                       className={`rounded-full border shadow-xl transition-all duration-300 ${loc.type === "primary"
-                        ? "w-4 h-4 border-white/90"
-                        : "w-3 h-3 border-white/70"
+                        ? "w-3 h-3 md:w-4 md:h-4 border-white/90"
+                        : "w-2.5 h-2.5 md:w-3 md:h-3 border-white/70"
                         }`}
                     />
                   </div>
@@ -148,9 +148,9 @@ export function GlobalPresenceMap() {
                         initial={{ opacity: 0, y: -5 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -5 }}
-                        className="absolute top-full mt-3 left-1/2 -translate-x-1/2"
+                        className="absolute top-full mt-2 left-1/2 -translate-x-1/2"
                       >
-                        <span className="text-[10px] font-bold text-white/80 uppercase tracking-widest whitespace-nowrap bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-sm border border-white/10 shadow-sm">
+                        <span className="text-[9px] md:text-[10px] font-bold text-white/80 uppercase tracking-widest whitespace-nowrap bg-black/80 backdrop-blur-md px-2 py-1 md:px-3 md:py-1.5 rounded-sm border border-white/10 shadow-sm">
                           {loc.city}
                         </span>
                       </motion.div>
@@ -189,7 +189,7 @@ export function GlobalPresenceMap() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="relative rounded-2xl p-7 md:p-8 h-[420px] flex flex-col justify-between overflow-hidden border border-white/5 bg-white/5 backdrop-blur-2xl"
+                className="relative rounded-2xl p-6 md:p-8 h-auto min-h-[360px] md:h-[420px] flex flex-col justify-between overflow-hidden border border-white/5 bg-white/5 backdrop-blur-2xl"
               >
                 <div className="absolute -top-10 -right-10 w-36 h-36 bg-[#C9A96E]/5 rounded-full blur-3xl pointer-events-none" />
 
@@ -197,56 +197,56 @@ export function GlobalPresenceMap() {
                   <motion.div 
                     initial={{ scale: 0.8 }}
                     animate={{ scale: 1 }}
-                    className="w-11 h-11 rounded-full flex items-center justify-center mb-6 border border-[#C9A96E]/30 bg-[#C9A96E]/10"
+                    className="w-10 h-10 md:w-11 md:h-11 rounded-full flex items-center justify-center mb-5 md:mb-6 border border-[#C9A96E]/30 bg-[#C9A96E]/10"
                   >
-                    <MapPin className="w-5 h-5 text-[#C9A96E]" />
+                    <MapPin className="w-4 h-4 md:w-5 md:h-5 text-[#C9A96E]" />
                   </motion.div>
 
-                  <h3 className="text-3xl md:text-4xl font-semibold text-white mb-2 tracking-tight">
+                  <h3 className="text-2xl md:text-4xl font-semibold text-white mb-2 tracking-tight">
                     {activeLocation.city}
                   </h3>
-                  <p className="font-semibold text-[11px] uppercase tracking-[0.28em] mb-8 text-white/60">
+                  <p className="font-semibold text-[9px] md:text-[11px] uppercase tracking-[0.2em] md:tracking-[0.28em] mb-6 md:mb-8 text-white/60">
                     {activeLocation.country}
                     <span className="mx-2 font-light text-white/20">|</span>
                     {activeLocation.role}
                   </p>
 
-                  <div className="space-y-6">
-                    <div className="border-l-2 border-[#C9A96E]/40 pl-5">
-                      <span className="block text-[10px] font-bold uppercase tracking-[0.22em] mb-2 text-white/50">
+                  <div className="space-y-4 md:space-y-6">
+                    <div className="border-l-2 border-[#C9A96E]/40 pl-4 md:pl-5">
+                      <span className="block text-[9px] md:text-[10px] font-bold uppercase tracking-[0.22em] mb-1 md:mb-2 text-white/50">
                         Office Location
                       </span>
-                      <p className="text-base leading-relaxed text-white/90">
+                      <p className="text-sm md:text-base leading-relaxed text-white/90">
                         {activeLocation.address}
                       </p>
                     </div>
 
-                    <div className="border-l-2 border-[#C9A96E]/40 pl-5">
-                      <span className="block text-[10px] font-bold uppercase tracking-[0.22em] mb-2 text-white/50">
+                    <div className="border-l-2 border-[#C9A96E]/40 pl-4 md:pl-5">
+                      <span className="block text-[9px] md:text-[10px] font-bold uppercase tracking-[0.22em] mb-1 md:mb-2 text-white/50">
                         Support & Inquiries
                       </span>
                       <a
                         href={`mailto:${activeLocation.email}`}
-                        className="transition-colors flex items-center gap-3 text-base font-medium text-white/90 hover:text-[#C9A96E]"
+                        className="transition-colors flex items-center gap-3 text-sm md:text-base font-medium text-white/90 hover:text-[#C9A96E]"
                       >
-                        <Mail className="w-4 h-4 text-[#C9A96E]" />
+                        <Mail className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#C9A96E]" />
                         {activeLocation.email}
                       </a>
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-auto relative z-10">
+                <div className="mt-8 md:mt-auto relative z-10">
                   <Link
                     href="/contact"
-                    className="flex items-center gap-4 text-[11px] font-bold uppercase tracking-[0.2em] text-white/60 hover:text-[#C9A96E] transition-all duration-300 group"
+                    className="flex items-center gap-4 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.2em] text-white/60 hover:text-[#C9A96E] transition-all duration-300 group"
                   >
-                    Request an appointment
+                    Request appointment
                     <motion.div 
                       whileHover={{ scale: 1.1, backgroundColor: "#C9A96E" }}
-                      className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center transition-all duration-500"
+                      className="w-9 h-9 md:w-10 md:h-10 rounded-full border border-white/15 flex items-center justify-center transition-all duration-500"
                     >
-                      <ArrowUpRight className="w-4 h-4 group-hover:text-white transition-colors" />
+                      <ArrowUpRight className="w-3.5 h-3.5 md:w-4 md:h-4 group-hover:text-white transition-colors" />
                     </motion.div>
                   </Link>
                 </div>

@@ -77,8 +77,22 @@ export default function Carousel({
   loop?: boolean;
   round?: boolean;
 }) {
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const effectiveBaseWidth = useMemo(() => {
+    if (windowWidth < 640) return Math.min(baseWidth, windowWidth - 40);
+    if (windowWidth < 1024) return Math.min(baseWidth, 360);
+    return baseWidth;
+  }, [baseWidth, windowWidth]);
+
   const containerPadding = 16;
-  const itemWidth = baseWidth - containerPadding * 2;
+  const itemWidth = effectiveBaseWidth - containerPadding * 2;
   const trackItemOffset = itemWidth + GAP;
   
   const itemsForRender = useMemo(() => {
@@ -213,8 +227,8 @@ export default function Carousel({
       ref={containerRef}
       className={`carousel-container ${round ? 'round' : ''}`}
       style={{
-        width: `${baseWidth}px`,
-        ...(round && { height: `${baseWidth}px`, borderRadius: '50%' })
+        width: `${effectiveBaseWidth}px`,
+        ...(round && { height: `${effectiveBaseWidth}px`, borderRadius: '50%' })
       }}
     >
       <motion.div
