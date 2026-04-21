@@ -18,10 +18,12 @@ export function SectionReveal({
   children,
   className = "",
   delay = 0,
+  style,
 }: {
   children: ReactNode;
   className?: string;
   delay?: number;
+  style?: React.CSSProperties;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
@@ -53,6 +55,7 @@ export function SectionReveal({
         ease: [0.16, 1, 0.3, 1],
       }}
       className={className}
+      style={style}
     >
       {children}
     </motion.div>
@@ -68,10 +71,12 @@ export function CinematicLine({
   children,
   className = "",
   delay = 0,
+  style,
 }: {
   children: ReactNode;
   className?: string;
   delay?: number;
+  style?: React.CSSProperties;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
@@ -93,7 +98,7 @@ export function CinematicLine({
   }, []);
 
   return (
-    <div ref={ref} className={`overflow-hidden ${className}`}>
+    <div ref={ref} className={`overflow-hidden ${className}`} style={style}>
       <motion.div
         initial={{ y: "108%", opacity: 0 }}
         animate={inView ? { y: "0%", opacity: 1 } : {}}
@@ -119,11 +124,13 @@ export function StaggerReveal({
   className = "",
   stagger = 0.08,
   baseDelay = 0,
+  style,
 }: {
   children: ReactNode;
   className?: string;
   stagger?: number;
   baseDelay?: number;
+  style?: React.CSSProperties;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
@@ -159,6 +166,7 @@ export function StaggerReveal({
         },
       }}
       className={className}
+      style={style}
     >
       {children}
     </motion.div>
@@ -169,9 +177,11 @@ export function StaggerReveal({
 export function StaggerItem({
   children,
   className = "",
+  style,
 }: {
   children: ReactNode;
   className?: string;
+  style?: React.CSSProperties;
 }) {
   return (
     <motion.div
@@ -184,6 +194,7 @@ export function StaggerItem({
         },
       }}
       className={className}
+      style={style}
     >
       {children}
     </motion.div>

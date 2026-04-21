@@ -3,7 +3,7 @@ import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { SmoothScroll } from "@/components/ui/SmoothScroll";
+import { SmoothScrollProvider } from "@/components/layout/SmoothScrollProvider";
 import Loader from "@/components/common/Loader";
 
 const space = Space_Grotesk({
@@ -33,10 +33,10 @@ export default function RootLayout({
       >
         <Loader />
         <Navbar />
-        <SmoothScroll>
+        <SmoothScrollProvider>
           <main className="w-full">{children}</main>
           <Footer />
-        </SmoothScroll>
+        </SmoothScrollProvider>
       </body>
     </html>
   );

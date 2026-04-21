@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check } from "lucide-react";
+import { CinematicLine, SectionReveal, StaggerReveal, StaggerItem, ScrollParallax } from "@/components/common/SectionReveal";
 
 export function AboutPreview() {
   return (
@@ -16,12 +16,7 @@ export function AboutPreview() {
 
           {/* ================= LEFT COLUMN: LEGACY & TITLE ================= */}
           <div className="lg:col-span-5">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
+            <SectionReveal>
               {/* LEGACY BADGE */}
               <div className="inline-flex items-center gap-3 mb-8">
                 <span className="text-4xl md:text-5xl font-bold text-gold/20">2011</span>
@@ -30,63 +25,50 @@ export function AboutPreview() {
               </div>
 
               <h2 className="text-4xl md:text-5xl font-semibold text-charcoal mb-8 leading-[1.1] tracking-tight">
-                A Decade of <br />
-                <span className="text-gold">Excellence in UAE</span>
+                <CinematicLine>A Decade of</CinematicLine>
+                <CinematicLine delay={0.1}><span className="text-gold">Excellence in UAE</span></CinematicLine>
               </h2>
 
-              <div className="flex flex-col gap-6">
+              <StaggerReveal baseDelay={0.2} stagger={0.15} className="flex flex-col gap-6">
                 {[
                   "Pioneering IT Solutions",
                   "Blockchain & DLT Experts",
                   "Trusted Corporate Partner"
                 ].map((item, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.3 + i * 0.1 }}
-                    className="flex items-center gap-4"
-                  >
+                  <StaggerItem key={i} className="flex items-center gap-4">
                     <div className="w-1.5 h-1.5 rounded-full bg-gold" />
                     <span className="text-sm font-bold uppercase tracking-widest text-charcoal/60">{item}</span>
-                  </motion.div>
+                  </StaggerItem>
                 ))}
-              </div>
-            </motion.div>
+              </StaggerReveal>
+            </SectionReveal>
           </div>
 
           {/* ================= RIGHT COLUMN: CONTENT ================= */}
-          <div className="lg:col-span-7">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative"
-            >
-              {/* STRATEGY QUOTE */}
-              <div className="mb-12">
-                <blockquote className="text-2xl md:text-3xl font-semibold text-gold italic leading-tight">
-                  "Winning should be at the heart of every Strategy."
-                </blockquote>
-              </div>
+          <div className="lg:col-span-7 mt-8 lg:mt-0">
+            <ScrollParallax speed={0.1}>
+              <SectionReveal delay={0.1} className="relative">
+                {/* STRATEGY QUOTE */}
+                <div className="mb-12">
+                  <blockquote className="text-2xl md:text-3xl font-semibold text-gold italic leading-tight">
+                    "Winning should be at the heart of every Strategy."
+                  </blockquote>
+                </div>
 
-              <div className="space-y-8 text-lg md:text-xl text-charcoal/80 leading-relaxed font-light">
-                <p>
-                  <span className="font-semibold text-charcoal text-xl block mb-2">Since 2011</span>
-                  Founded in year 2011, Suvik Group is based in the UAE. A decade of experience has made us a trusted partner for businesses seeking innovative and reliable IT solutions.
-                </p>
-                <p>
-                  At Suvik, we are committed to delivering cutting-edge IT solutions that transform businesses. With a deep understanding of <span className="text-gold font-medium">Distributed Ledger Technology and Blockchain</span>, we offer comprehensive IT consultancy services to help our clients unlock their full potential.
-                </p>
-                <p>
-                  Suvik continues to lead the way in IT services and blockchain technology, driving digital transformation and delivering innovative solutions to meet the evolving needs of businesses in the UAE and beyond.
-                </p>
-              </div>
-
-
-            </motion.div>
+                <div className="space-y-8 text-lg md:text-xl text-charcoal/80 leading-relaxed font-light">
+                  <p>
+                    <span className="font-semibold text-charcoal text-xl block mb-2">Since 2011</span>
+                    Founded in year 2011, Suvik Group is based in the UAE. A decade of experience has made us a trusted partner for businesses seeking innovative and reliable IT solutions.
+                  </p>
+                  <p>
+                    At Suvik, we are committed to delivering cutting-edge IT solutions that transform businesses. With a deep understanding of <span className="text-gold font-medium">Distributed Ledger Technology and Blockchain</span>, we offer comprehensive IT consultancy services to help our clients unlock their full potential.
+                  </p>
+                  <p>
+                    Suvik continues to lead the way in IT services and blockchain technology, driving digital transformation and delivering innovative solutions to meet the evolving needs of businesses in the UAE and beyond.
+                  </p>
+                </div>
+              </SectionReveal>
+            </ScrollParallax>
           </div>
 
         </div>

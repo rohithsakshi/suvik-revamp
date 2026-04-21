@@ -124,15 +124,15 @@ export function Footer() {
           ref={ctaRef}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
-          initial={{ opacity: 0, y: 50, rotateX: 0, rotateY: 0 }}
+          initial={{ opacity: 0, y: 80, rotateX: 0, rotateY: 0 }}
           animate={ctaInView ? { opacity: 1, y: 0 } : {}}
           style={{ 
             rotateX, 
             rotateY, 
-            perspective: "1200px",
+            perspective: "1500px",
             transformStyle: "preserve-3d"
           }}
-          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           className="relative rounded-[2rem] overflow-hidden transform-gpu"
         >
           <div 
@@ -149,31 +149,32 @@ export function Footer() {
             className="absolute top-0 right-0 w-64 h-64 rounded-full pointer-events-none"
             style={{ 
               background: 'radial-gradient(circle, rgba(224,185,122,0.12) 0%, transparent 70%)', 
-              transform: 'translate(40%, -40%) translateZ(20px)' 
+              transform: 'translate(40%, -40%) translateZ(40px)' 
             }} 
           />
           <motion.div 
             className="absolute bottom-0 left-0 w-40 h-40 rounded-full pointer-events-none"
             style={{ 
               background: 'radial-gradient(circle, rgba(224,185,122,0.07) 0%, transparent 70%)', 
-              transform: 'translate(-30%, 30%) translateZ(10px)' 
+              transform: 'translate(-30%, 30%) translateZ(20px)' 
             }} 
           />
 
           <div className="relative z-10 px-8 md:px-16 py-14 flex flex-col md:flex-row md:items-center md:justify-between gap-10 transform-gpu" style={{ transform: "translateZ(30px)" }}>
-            <div className="max-w-xl">
-              <motion.h2
+            <div className="max-w-xl overflow-hidden">
+              <motion.div
+                initial={{ y: "100%", opacity: 0 }}
+                animate={ctaInView ? { y: "0%", opacity: 1 } : {}}
+                transition={{ duration: 1.2, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <h2 className="text-4xl md:text-5xl font-light text-[#1a1a1a] mb-5 leading-tight tracking-tight">
+                  Let&apos;s Work <em className="not-italic text-gold italic">Together</em>
+                </h2>
+              </motion.div>
+              <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={ctaInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                className="text-4xl md:text-5xl font-light text-[#1a1a1a] mb-5 leading-tight tracking-tight"
-              >
-                Let&apos;s Work <em className="not-italic text-gold italic">Together</em>
-              </motion.h2>
-              <motion.p
-                initial={{ opacity: 0, y: 16 }}
-                animate={ctaInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.7, delay: 0.32, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
                 className="text-[#7a6a50] font-light leading-relaxed text-base md:text-lg"
               >
                 Ready to elevate your business? Get in touch with our experts today to discuss your vision.
@@ -183,9 +184,9 @@ export function Footer() {
             <motion.div
               initial={{ opacity: 0, scale: 0.92 }}
               animate={ctaInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.6, delay: 0.44 }}
-              whileHover={{ scale: 1.05, translateZ: "20px" }}
-              className="transform-gpu"
+              transition={{ duration: 0.8, delay: 0.4 }}
+              whileHover={{ scale: 1.05, translateZ: "40px" }}
+              className="transform-gpu inline-block"
             >
               <Link
                 href="/contact"

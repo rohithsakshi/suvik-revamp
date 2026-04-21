@@ -102,7 +102,7 @@ function ArchPanel({
 // DarkArchPanel — maximum contrast arrival for dark sections
 // ─────────────────────────────────────────────────────────────────────────────
 
-function DarkArchPanel({ children, zIndex = 10 }: { children: React.ReactNode; zIndex?: number }) {
+function DarkArchPanel({ children, id, zIndex = 10 }: { children: React.ReactNode; id?: string; zIndex?: number }) {
   const ref = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -124,6 +124,7 @@ function DarkArchPanel({ children, zIndex = 10 }: { children: React.ReactNode; z
   return (
     <motion.div
       ref={ref}
+      id={id}
       style={{
         y,
         opacity,
@@ -163,27 +164,27 @@ export default function HomePage() {
       </div>
 
       {/* Scene 2: About — first panel rise */}
-      <ArchPanel bg="#FCF9F5" zIndex={20} overlapPx={48} shadowColor="rgba(0,0,0,0.04)">
+      <ArchPanel id="about" bg="#FCF9F5" zIndex={20} overlapPx={48} shadowColor="rgba(0,0,0,0.04)">
         <AboutPreview />
       </ArchPanel>
 
       {/* Scene 3: Services — warmer tone, heavier overlap */}
-      <ArchPanel bg="#F7F3EC" zIndex={30} overlapPx={64} shadowColor="rgba(0,0,0,0.055)">
+      <ArchPanel id="services" bg="#F7F3EC" zIndex={30} overlapPx={64} shadowColor="rgba(0,0,0,0.055)">
         <ServicesSection />
       </ArchPanel>
 
       {/* Scene 4: Clients — returns to base cream */}
-      <ArchPanel bg="#FCF9F5" zIndex={40} overlapPx={56} shadowColor="rgba(0,0,0,0.045)">
+      <ArchPanel id="projects" bg="#FCF9F5" zIndex={40} overlapPx={56} shadowColor="rgba(0,0,0,0.045)">
         <Clients />
       </ArchPanel>
 
       {/* Scene 5: Why Choose Us — premium warm cream, authority statement */}
-      <ArchPanel bg="#F5F0E8" zIndex={50} overlapPx={60} shadowColor="rgba(0,0,0,0.05)">
+      <ArchPanel id="why-choose-us" bg="#F5F0E8" zIndex={50} overlapPx={60} shadowColor="rgba(0,0,0,0.05)">
         <WhyChooseUs />
       </ArchPanel>
 
       {/* Scene 6: Global Presence — dark panel, cinematic finale */}
-      <DarkArchPanel zIndex={60}>
+      <DarkArchPanel id="contact" zIndex={60}>
         <GlobalPresenceMap />
       </DarkArchPanel>
     </div>
