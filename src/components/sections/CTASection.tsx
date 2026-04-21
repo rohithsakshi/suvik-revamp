@@ -8,7 +8,7 @@ import { CinematicLine, SectionReveal } from "@/components/common/SectionReveal"
 
 export function CTASection() {
   return (
-    <section className="relative py-32 md:py-48 overflow-hidden bg-[#FCF9F5]">
+    <section className="relative py-32 md:py-48 overflow-hidden bg-[#EDE6DA]">
       
       {/* BACKGROUND ACCENTS - Deep cinematic glow */}
       <div className="absolute inset-0 z-0">

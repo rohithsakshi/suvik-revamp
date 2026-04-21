@@ -22,7 +22,7 @@ export function WhyChooseUs() {
   return (
     <section 
       ref={containerRef}
-      className="relative py-32 md:py-48 bg-[#FCF9F5] overflow-hidden"
+      className="relative py-32 md:py-48 bg-[#EDE6DA] overflow-hidden"
     >
       {/* 🏙️ ARCHITECTURAL BACKGROUND ELEMENTS */}
       <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gold/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/4 pointer-events-none" />
@@ -66,7 +66,7 @@ export function WhyChooseUs() {
               <div className="mt-20 flex items-center gap-8">
                 <div className="flex -space-x-3">
                   {[1, 2, 3].map((i) => (
-                    <div key={i} className="w-12 h-12 rounded-full border-[3px] border-[#FCF9F5] bg-charcoal/[0.03] flex items-center justify-center overflow-hidden">
+                    <div key={i} className="w-12 h-12 rounded-full border-[3px] border-[#EDE6DA] bg-charcoal/[0.03] flex items-center justify-center overflow-hidden">
                        <div className="w-full h-full bg-gradient-to-tr from-gold/10 to-transparent" />
                     </div>
                   ))}

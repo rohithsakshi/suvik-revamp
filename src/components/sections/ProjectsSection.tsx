@@ -29,7 +29,7 @@ const projects = [
 
 export function ProjectsSection() {
   return (
-    <section className="relative py-24 md:py-32 bg-[#FCF9F5] overflow-hidden">
+    <section className="relative py-24 md:py-32 bg-[#EDE6DA] overflow-hidden">
       
       {/* BACKGROUND PARALLAX DECOR */}
       <ScrollParallax speed={-0.1}>

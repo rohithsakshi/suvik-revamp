@@ -117,7 +117,7 @@ export function Footer() {
   };
 
   return (
-    <section className="relative z-10" style={{ background: '#FCF9F5' }}>
+    <section className="relative z-10" style={{ background: '#EDE6DA' }}>
       {/* ── CTA Card ── */}
       <div className="container mx-auto px-6 md:px-12 pb-0 pt-20">
         <motion.div

@@ -115,8 +115,8 @@ export function ServicesSection() {
                   >
                     <div
                       className={`rounded-[24px] border p-6 md:p-7 h-full transition-all duration-500 transform-gpu ${isActive
-                          ? "bg-white border-[#C9A96E]/30 shadow-[0_22px_50px_rgba(201,169,110,0.08)] scale-[1.02]"
-                          : "bg-white/60 border-black/6 hover:border-[#C9A96E]/20 hover:bg-white/80"
+                          ? "bg-[#EDE6DA] border-[#C9A96E]/40 shadow-[0_20px_50px_rgba(0,0,0,0.06)] scale-[1.02]"
+                          : "bg-[#EDE6DA]/40 border-black/5 hover:border-[#C9A96E]/20 hover:bg-[#EDE6DA]/60"
                         }`}
                       style={{ transformStyle: "preserve-3d" }}
                     >
@@ -166,7 +166,7 @@ export function ServicesSection() {
             transition={{ duration: 0.45 }}
             className="relative h-full"
           >
-            <div className="relative bg-white rounded-[28px] border border-black/5 p-4 md:p-5 shadow-[0_20px_60px_rgba(0,0,0,0.04)] overflow-hidden h-full min-h-[720px]">
+            <div className="relative bg-[#EDE6DA]/40 rounded-[28px] border border-black/5 p-4 md:p-5 shadow-[0_20px_60px_rgba(0,0,0,0.04)] overflow-hidden h-full min-h-[720px]">
               <PremiumVisual
                 badge={activeService.badge}
                 title={activeService.heading}

@@ -33,7 +33,7 @@ export default function Loader({ onFinish }: { onFinish?: () => void }) {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.8, ease: [0.43, 0.13, 0.23, 0.96] }}
-          className="fixed inset-0 z-[10000] bg-[#FCF9F5] flex items-center justify-center overflow-hidden"
+          className="fixed inset-0 z-[10000] bg-[#EDE6DA] flex items-center justify-center overflow-hidden"
         >
           {/* CENTERED LOGO ANIMATION */}
           <motion.div

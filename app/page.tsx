@@ -157,29 +157,29 @@ function DarkArchPanel({ children, id, zIndex = 10 }: { children: React.ReactNod
 
 export default function HomePage() {
   return (
-    <div className="relative bg-[#FCF9F5] overflow-x-hidden">
+    <div className="relative bg-[#EDE6DA] overflow-x-hidden">
       {/* Scene 1: Hero — the stage. No animation. It is the world. */}
       <div style={{ position: "relative", zIndex: 1 }}>
         <Hero />
       </div>
 
       {/* Scene 2: About — first panel rise */}
-      <ArchPanel id="about" bg="#FCF9F5" zIndex={20} overlapPx={48} shadowColor="rgba(0,0,0,0.04)">
+      <ArchPanel id="about" bg="#EDE6DA" zIndex={20} overlapPx={48} shadowColor="rgba(0,0,0,0.06)">
         <AboutPreview />
       </ArchPanel>
 
       {/* Scene 3: Services — warmer tone, heavier overlap */}
-      <ArchPanel id="services" bg="#F7F3EC" zIndex={30} overlapPx={64} shadowColor="rgba(0,0,0,0.055)">
+      <ArchPanel id="services" bg="#E6DDD0" zIndex={30} overlapPx={64} shadowColor="rgba(0,0,0,0.07)">
         <ServicesSection />
       </ArchPanel>
 
       {/* Scene 4: Clients — returns to base cream */}
-      <ArchPanel id="projects" bg="#FCF9F5" zIndex={40} overlapPx={56} shadowColor="rgba(0,0,0,0.045)">
+      <ArchPanel id="projects" bg="#EDE6DA" zIndex={40} overlapPx={56} shadowColor="rgba(0,0,0,0.065)">
         <Clients />
       </ArchPanel>
 
       {/* Scene 5: Why Choose Us — premium warm cream, authority statement */}
-      <ArchPanel id="why-choose-us" bg="#F5F0E8" zIndex={50} overlapPx={60} shadowColor="rgba(0,0,0,0.05)">
+      <ArchPanel id="why-choose-us" bg="#DDD4C6" zIndex={50} overlapPx={60} shadowColor="rgba(0,0,0,0.08)">
         <WhyChooseUs />
       </ArchPanel>
 

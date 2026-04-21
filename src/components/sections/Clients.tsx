@@ -87,8 +87,8 @@ export function Clients() {
       {/* MARQUEE */}
       <div className="relative w-full flex items-center justify-center overflow-hidden h-[360px] md:h-[380px]">
         {/* Fades */}
-        <div className="absolute left-0 top-0 bottom-0 w-24 md:w-64 bg-gradient-to-r from-[#FCF9F5] via-[#FCF9F5]/85 to-transparent z-40 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-24 md:w-64 bg-gradient-to-l from-[#FCF9F5] via-[#FCF9F5]/85 to-transparent z-40 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-24 md:w-64 bg-gradient-to-r from-[#EDE6DA] via-[#EDE6DA]/85 to-transparent z-40 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-24 md:w-64 bg-gradient-to-l from-[#EDE6DA] via-[#EDE6DA]/85 to-transparent z-40 pointer-events-none" />
 
         <div className="flex w-full overflow-hidden">
           <motion.div
@@ -142,7 +142,7 @@ function ClientCard({ client }: { client: typeof clients[0] }) {
 
       <motion.div 
         style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-        className="w-[240px] md:w-[280px] bg-white rounded-[28px] p-6 md:p-7 border border-black/5 shadow-[0_12px_40px_rgba(0,0,0,0.02)] flex flex-col items-center text-center transition-all duration-500 hover:border-[#C9A96E]/30 hover:shadow-[0_25px_60px_rgba(201,169,110,0.12)] relative z-10 transform-gpu"
+        className="w-[240px] md:w-[280px] bg-[#F5F1EA] rounded-[28px] p-6 md:p-7 border border-black/5 shadow-[0_12px_40px_rgba(0,0,0,0.02)] flex flex-col items-center text-center transition-all duration-500 hover:border-[#C9A96E]/30 hover:shadow-[0_25px_60px_rgba(201,169,110,0.12)] relative z-10 transform-gpu"
       >
 
         {/* Logo */}

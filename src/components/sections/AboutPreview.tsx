@@ -5,7 +5,7 @@ import { CinematicLine, SectionReveal, StaggerReveal, StaggerItem, ScrollParalla
 
 export function AboutPreview() {
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden bg-[#FCF9F5]">
+    <section className="relative py-24 md:py-32 overflow-hidden bg-[#EDE6DA]">
 
       {/* ================= BACKGROUND ELEMENTS ================= */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-gold/5 blur-[120px] pointer-events-none" />

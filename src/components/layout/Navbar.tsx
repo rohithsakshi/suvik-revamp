@@ -25,7 +25,7 @@ export function Navbar() {
         className="fixed top-8 left-0 w-full z-[100] pointer-events-none flex justify-center"
       >
             <div className="px-6 md:px-12 w-full flex justify-center">
-              <nav className="pointer-events-auto flex items-center gap-5 px-8 py-3.5 rounded-full bg-white/40 backdrop-blur-2xl border border-white/20 shadow-[0_10px_40px_rgba(0,0,0,0.04)] transition-all duration-500 hover:bg-white/60">
+              <nav className="pointer-events-auto flex items-center gap-5 px-8 py-3.5 rounded-full bg-[#EDE6DA]/70 backdrop-blur-2xl border border-[#C9A96E]/20 shadow-[0_10px_40px_rgba(0,0,0,0.08)] transition-all duration-500 hover:bg-[#EDE6DA]/90">
                 {/* LOGO */}
                 <Link href="/" className="flex items-center group transition-transform hover:scale-105 duration-500 ease-[0.16,1,0.3,1] mr-2">
                   <Image
@@ -80,7 +80,7 @@ export function Navbar() {
             animate={{ opacity: 1, backdropFilter: "blur(20px)" }}
             exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-[110] bg-[#FCF9F5]/90 flex flex-col items-center justify-center gap-10"
+            className="fixed inset-0 z-[110] bg-[#EDE6DA]/90 flex flex-col items-center justify-center gap-10"
           >
             <button
               className="absolute top-10 right-10 text-charcoal/60 hover:text-charcoal transition-colors duration-300"

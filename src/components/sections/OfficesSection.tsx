@@ -44,7 +44,7 @@ export function OfficesSection() {
   const [activeOffice, setActiveOffice] = useState(offices[0]);
 
   return (
-    <section className="relative py-32 bg-[#FCF9F5] overflow-hidden">
+    <section className="relative py-32 bg-[#EDE6DA] overflow-hidden">
       
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         

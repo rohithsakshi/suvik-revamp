@@ -48,7 +48,7 @@ export function PremiumVisual({
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative h-[520px] md:h-[620px] rounded-[30px] overflow-hidden bg-[#FCF9F5] border border-black/5 flex items-center justify-center shadow-[inset_0_0_100px_rgba(224,185,122,0.03)] group"
+      className="relative h-[520px] md:h-[620px] rounded-[30px] overflow-hidden bg-[#EDE6DA] border border-black/5 flex items-center justify-center shadow-[inset_0_0_100px_rgba(201,169,110,0.03)] group"
       style={{ perspective: "1200px" }}
     >
       {/* Architectural Glow Layers */}
@@ -120,7 +120,7 @@ export function PremiumVisual({
       </motion.div>
 
       {/* Bottom smooth fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#FCF9F5] to-transparent z-10 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#EDE6DA] to-transparent z-10 pointer-events-none" />
     </div>
   );
 }
