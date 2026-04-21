@@ -12,7 +12,7 @@ import { CinematicLine, SectionReveal, StaggerItem, StaggerReveal } from "@/comp
 
 export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
-  
+
   // Strong Layered Parallax
   const { scrollY } = useScroll();
   const skyY = useTransform(scrollY, [0, 800], [0, 150]);
@@ -42,27 +42,26 @@ export function Hero() {
   };
 
   return (
-    <section 
+    <section
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#E8DDD0]"
       style={{ perspective: "1500px" }}
     >
-      
+
       {/* 🌀 BACKGROUND PARALLAX (z-0) */}
       <motion.div style={{ y: arcY }} className="absolute inset-0 z-0">
         <FlowArc />
         {/* Subtle skyline silhouette with slow premium image motion */}
-        <motion.div 
+        <motion.div
           style={{ y: skyY }}
-          className="absolute bottom-0 left-0 w-full flex justify-center opacity-[0.04] pointer-events-none origin-bottom scale-[1.02]"
-        >
-          <Image 
-            src="/dubai-silhouete.png" 
-            alt="Dubai Skyline" 
-            width={1920} 
-            height={400} 
+          className="absolute bottom-0 left-0 w-full flex justify-center opacity-[0.10] pointer-events-none origin-bottom scale-[1.02]"        >
+          <Image
+            src="/dubai-silhouete.png"
+            alt="Dubai Skyline"
+            width={1920}
+            height={400}
             className="w-full h-auto object-contain translate-y-10"
             priority
           />
@@ -77,16 +76,16 @@ export function Hero() {
 
       {/* 🧱 CONTENT (z-10) */}
       <motion.div
-        style={{ 
-          rotateX, 
-          rotateY, 
+        style={{
+          rotateX,
+          rotateY,
           y: contentY,
           opacity: contentOpacity,
-          transformStyle: "preserve-3d" 
+          transformStyle: "preserve-3d"
         }}
         className="relative z-10 flex flex-col items-center justify-center w-full px-6 pt-24"
       >
-        
+
         {/* INTEGRATED TAG */}
         <SectionReveal delay={0.2} className="mb-10" style={{ transform: "translateZ(30px)" }}>
           <div className="inline-flex items-center gap-2.5 border border-gold/50 bg-gold/10 text-gold-dark px-5 py-2 rounded-sm text-[10px] font-bold tracking-[0.3em] uppercase backdrop-blur-sm shadow-[0_10px_30px_rgba(180,130,60,0.18)]">
