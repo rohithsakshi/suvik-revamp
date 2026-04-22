@@ -11,14 +11,14 @@ export default function AboutPage() {
         <div className="container mx-auto px-6 md:px-12 relative z-10">
           <div className="max-w-4xl">
             <p className="text-[11px] font-semibold uppercase tracking-[0.4em] text-[#E0B97A] mb-4">
-              Est. 2011 — Dubai, UAE
+              About Suvik Group
             </p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-charcoal mb-6 leading-[1.1] tracking-tight">
-              We Built Suvik to <br />
-              <span className="text-[#E0B97A]">End the Complexity</span>
+              A Trusted Partner <br />
+              <span className="text-[#E0B97A]">Since 2011</span>
             </h1>
             <p className="text-lg md:text-xl text-charcoal/60 max-w-2xl leading-relaxed font-light">
-              Most founders spend months navigating UAE bureaucracy. We’ve spent 14 years building the company that makes it disappear — in 30 days, with 516+ launches to prove it.
+              Founded in Dubai, Suvik Group has evolved into a dynamic multi-entity organization &mdash; empowering entrepreneurs, SMEs, and multinationals to establish, grow, and lead in the UAE and beyond.
             </p>
           </div>
         </div>

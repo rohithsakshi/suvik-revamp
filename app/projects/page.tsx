@@ -13,10 +13,7 @@ export default function ProjectsPage() {
             <h1 className="text-4xl md:text-5xl font-semibold text-white mb-6 leading-tight tracking-tight">
               Strategic <span className="text-[#E0B97A]">Deliveries</span>
             </h1>
-            {/* <p className="text-lg text-white/50 max-w-2xl leading-relaxed font-light">
-              516+ projects delivered across business setup, enterprise technology,
-              and blockchain infrastructure — serving clients from startups to Fortune 500.
-            </p> */}
+
           </div>
         </div>
       </section>

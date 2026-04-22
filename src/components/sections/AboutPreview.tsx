@@ -78,7 +78,7 @@ export function AboutPreview() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, delay: 0.5 }}
                   >
-                    &quot;Fourteen years ago, I saw founders struggling with UAE bureaucracy. We built Suvik to solve that — once and for all.&quot;
+                    &quot;We don&apos;t just enable businesses — we help them grow, adapt, and lead in a rapidly evolving digital world.&quot;
                   </motion.span>
                 </blockquote>
                 <p className="text-sm text-charcoal/40 mt-3 font-medium tracking-wide">— Vinod Khurana, CEO &amp; Co-Founder</p>
@@ -86,14 +86,13 @@ export function AboutPreview() {
 
               <div className="space-y-8 text-lg md:text-xl text-charcoal/80 leading-relaxed font-light">
                 <p>
-                  <span className="font-semibold text-charcoal text-xl block mb-2">The Problem We Solve</span>
-                  Most founders spend 3–6 months navigating Free Zones, licenses, visas, and banking. We&apos;ve compressed that into 30 days — 516 times and counting.
+                  For over a decade, we have been a trusted partner to entrepreneurs, SMEs, and multinational corporations — delivering seamless <span className="font-medium text-charcoal">business setup services</span> alongside cutting-edge IT solutions in one of the world&apos;s most progressive business ecosystems.
                 </p>
                 <p>
-                  Beyond business setup, we build enterprise-grade <span className="text-gold font-medium">blockchain infrastructure on XDC, Ethereum, and Hyperledger</span> — powering real-world assets, DeFi protocols, and institutional compliance layers across the GCC.
+                  Our strength lies in the fusion of <span className="text-gold font-medium">regulatory expertise and technological innovation</span>. With deep domain knowledge in DLT, Blockchain, Data Analytics, IoT, and Application Development, we empower businesses to not only establish their presence but also scale intelligently.
                 </p>
                 <p>
-                  From a family-owned startup to a multinational expansion, Suvik is the one vendor that handles both your <span className="font-medium text-charcoal">corporate formation and technology stack</span> — under one roof, on UAE time.
+                  Backed by extensive experience in UAE regulations, free zone frameworks, and corporate structuring, Suvik Group is uniquely positioned to support organizations at every stage — <span className="font-medium text-charcoal">from inception to expansion</span>.
                 </p>
               </div>
             </SectionReveal>

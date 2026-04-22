@@ -28,13 +28,13 @@ export function CTASection() {
             </div>
             
             <h2 className="text-5xl md:text-7xl font-semibold text-charcoal mb-10 leading-[1.05] tracking-tight">
-              <CinematicLine>Your Competitors</CinematicLine>
-              <CinematicLine delay={0.1}><span className="text-gold italic font-light">Are Already Here.</span></CinematicLine>
+              <CinematicLine>Ready to Grow</CinematicLine>
+              <CinematicLine delay={0.1}><span className="text-gold italic font-light">in the UAE?</span></CinematicLine>
             </h2>
 
             <SectionReveal delay={0.3}>
               <p className="text-xl md:text-2xl text-charcoal/60 mb-16 max-w-2xl mx-auto leading-relaxed font-light tracking-wide">
-                516+ companies launched. 14 years of UAE expertise. Schedule a free 30-minute consultation — and walk away with a clear action plan, even if we never work together.
+                Whether you&apos;re launching a new venture or scaling an existing one, our team is ready to help you navigate the journey — from business setup to technology transformation.
               </p>
             </SectionReveal>
 

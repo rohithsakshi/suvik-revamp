@@ -167,7 +167,7 @@ export function Footer() {
                 transition={{ duration: 1.2, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               >
                 <h2 className="text-4xl md:text-5xl font-light text-[#1a1a1a] mb-5 leading-tight tracking-tight">
-                  Let&apos;s Build <em className="not-italic text-gold italic">Something Real</em>
+                  Let&apos;s Grow <em className="not-italic text-gold italic">Together</em>
                 </h2>
               </motion.div>
               <motion.p
@@ -176,7 +176,7 @@ export function Footer() {
                 transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
                 className="text-[#7a6a50] font-light leading-relaxed text-base md:text-lg"
               >
-                Book a free 30-minute strategy call. We&apos;ll map your UAE market entry or tech roadmap — with actionable next steps, even if we never work together.
+                Ready to take the next step? Get in touch with our team to discuss your vision and explore how we can grow together.
               </motion.p>
             </div>
 
@@ -243,7 +243,7 @@ export function Footer() {
               </Link>
               <p className="text-[#6b5e45] font-light leading-relaxed max-w-sm text-[15px]"
                 style={{ letterSpacing: '0.02em' }}>
-                Since 2011, Suvik has helped 500+ companies launch in the UAE — from Free Zone formation to enterprise blockchain. One vendor for setup, technology, and growth.
+                Founded in 2011, Suvik Group is a dynamic multi-entity organization headquartered in the UAE — empowering businesses with seamless corporate services and cutting-edge technology solutions.
               </p>
               <div className="flex items-center gap-4 pt-2">
                 <SocialIcon href="#" label="LinkedIn">
@@ -274,9 +274,19 @@ export function Footer() {
                 Useful Links
               </h4>
               <nav className="flex flex-col gap-2">
-                {['Home', 'About Us', 'Services', 'People', 'Contact Us'].map((link) => (
-                  <FooterLink key={link} href={link === 'Home' ? '/' : `/${link.toLowerCase().replace(' ', '')}`}>{link}</FooterLink>
-                ))}
+                {['Home', 'About Us', 'Services', 'People', 'Contact Us'].map((link) => {
+                  let href = "/";
+                  if (link === 'Home') href = "/";
+                  else if (link === 'About Us') href = "/#about";
+                  else if (link === 'Contact Us') href = "/contact";
+                  else href = `/${link.toLowerCase().replace(' ', '')}`;
+                  
+                  return (
+                    <FooterLink key={link} href={href}>
+                      {link}
+                    </FooterLink>
+                  );
+                })}
               </nav>
             </motion.div>
 

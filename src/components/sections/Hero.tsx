@@ -47,14 +47,47 @@ export function Hero() {
         {/* TYPOGRAPHY */}
         <div className="text-center mb-8 relative">
           <TypographyThread />
-          <motion.span 
-            initial={{ opacity: 0, letterSpacing: "0.2em" }}
-            animate={{ opacity: 1, letterSpacing: "0.4em" }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
-            className="block text-sm md:text-base font-medium text-charcoal/50 uppercase mb-6"
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="flex items-center justify-center gap-4 mb-6"
           >
-            Welcome to
-          </motion.span>
+            <motion.div 
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 1.2, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              className="h-px w-8 md:w-12 bg-gradient-to-r from-transparent to-gold/60 origin-right hidden sm:block" 
+            />
+            <motion.span 
+              initial={{ opacity: 0, letterSpacing: "0.15em", y: 8 }}
+              animate={{ opacity: 1, letterSpacing: "0.35em", y: 0 }}
+              transition={{ duration: 1.5, ease: "easeOut" }}
+              className="text-[10px] md:text-xs font-semibold uppercase tracking-[0.35em] text-charcoal/40"
+            >
+              Growing with You
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0, letterSpacing: "0.15em", y: 8 }}
+              animate={{ opacity: 1, letterSpacing: "0.35em", y: 0 }}
+              transition={{ duration: 1.5, delay: 0.3, ease: "easeOut" }}
+              className="text-[10px] md:text-xs font-semibold uppercase tracking-[0.35em]"
+              style={{
+                background: "linear-gradient(135deg, #C9A96E 0%, #E0C78A 50%, #C9A96E 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+            >
+              in the UAE &amp; Beyond
+            </motion.span>
+            <motion.div 
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 1.2, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              className="h-px w-8 md:w-12 bg-gradient-to-l from-transparent to-gold/60 origin-left hidden sm:block" 
+            />
+          </motion.div>
           
           <h1 className="text-[2.75rem] sm:text-5xl md:text-[5.5rem] lg:text-[7rem] flex flex-col items-center tracking-tight leading-[1.02]">
             <CinematicLine><span className="font-extrabold text-charcoal">Suvik Group</span></CinematicLine>
@@ -65,7 +98,7 @@ export function Hero() {
         {/* SUBTEXT */}
         <SectionReveal delay={0.4} className="mb-10 md:mb-14 max-w-2xl text-center">
           <p className="text-base md:text-xl text-charcoal/60 leading-relaxed font-light tracking-wide px-4 md:px-0">
-            Set up your company in the UAE in 30 days — or build enterprise blockchain. We&apos;ve done both 500+ times since 2011, from Free Zone to Fortune 500.
+            Headquartered in the UAE since 2011, we empower your journey from business setup to sustained growth — fusing regulatory expertise with cutting-edge technology across DLT, Blockchain, and Enterprise IT.
           </p>
         </SectionReveal>
 

@@ -60,10 +60,10 @@ export function WhyChooseUs() {
 
               <div className="space-y-8 text-xl text-charcoal/60 font-light leading-relaxed max-w-xl">
                 <p>
-                  Most consultancies offer either business setup <em>or</em> IT services. <span className="text-charcoal font-medium">SUVIK does both</span> — under one roof, with one point of contact, on UAE time.
+                  At <span className="text-charcoal font-medium">SUVIK</span>, our strength lies in the fusion of regulatory expertise and technological innovation — supporting businesses from inception to expansion.
                 </p>
                 <p>
-                  Our <span className="text-[#C9A96E] font-medium">partner-led approach</span> means you work directly with senior leadership — not junior account managers. Fixed scopes, transparent pricing, and a guaranteed <span className="font-medium text-charcoal">2-hour response time</span>.
+                  With our <span className="text-[#C9A96E] font-medium">partner-led approach</span>, we deliver deep domain knowledge across DLT, Blockchain, Data Analytics, IoT, and Application Development — helping you scale intelligently and sustainably.
                 </p>
               </div>
 

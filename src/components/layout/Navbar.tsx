@@ -8,7 +8,7 @@ import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
+  { name: "About", href: "/#about" },
   { name: "Services", href: "/services" },
   { name: "Projects", href: "/projects" },
 ];
@@ -50,6 +50,7 @@ export function Navbar() {
             {/* LOGO */}
             <Link href="/" className="flex items-center group transition-transform hover:scale-105 duration-500">
               <motion.div
+                data-navbar-logo
                 animate={{ width: isScrolled ? 80 : 100 }}
                 className="relative h-6"
               >

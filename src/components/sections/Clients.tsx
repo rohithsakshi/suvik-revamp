@@ -80,15 +80,15 @@ export function Clients() {
               </div>
 
               <h2 className="text-4xl md:text-5xl font-semibold text-[#1A1A1A] tracking-tight leading-tight mb-8">
-                Trusted by <span className="text-gold">Industry</span> Leaders
+                Building Success via <span className="text-gold">Strategic</span> Alliances
               </h2>
 
               <div className="space-y-6 text-lg text-charcoal/70 font-light leading-relaxed">
                 <p>
-                  From <span className="font-medium text-charcoal">XDC Foundation</span> and <span className="text-gold font-medium">Plugin Oracle</span> to enterprise fintech leaders like Comtech Gold and Tathmeer — our clients choose Suvik because we deliver production-grade results, not prototypes.
+                  At <span className="font-medium text-charcoal">Suvik Group</span>, we believe that extraordinary growth is the result of focused, strategic partnerships. Our client ecosystem comprises industry leaders in <span className="text-gold font-medium">Blockchain, Fintech, and Enterprise Technology</span>.
                 </p>
                 <p>
-                  <span className="font-medium text-charcoal">AED 500M+</span> in assets tokenized. <span className="font-medium text-charcoal">500+</span> smart contracts deployed. 8+ long-term partnerships built on trust, transparency, and on-time execution.
+                  We build long-term value by aligning with organizations that share our vision for technological excellence and market decisiveness — ensuring every venture is built on a foundation of trust and global scale.
                 </p>
                 <div className="pt-6 flex items-center gap-6">
                    <div className="flex flex-col">
@@ -100,7 +100,7 @@ export function Clients() {
                       <span className="text-2xl font-bold text-charcoal tracking-tight">14+</span>
                       <span className="text-[9px] uppercase tracking-widest text-charcoal/40 font-bold">Years of Trust</span>
                    </div>
-                </div>
+                 </div>
               </div>
             </SectionReveal>
           </div>
