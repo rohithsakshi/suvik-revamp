@@ -15,42 +15,42 @@ import { CinematicLine, SectionReveal, StaggerReveal, StaggerItem, ScrollParalla
 const services = [
   {
     title: "Business Setup",
-    heading: "UAE Market Entry",
+    heading: "Launch in the UAE — in 30 Days",
     description:
-      "Mainland, Free Zone and Offshore company formation with complete licensing and strategic market entry support.",
+      "Free Zone vs Mainland confusion? Visa quotas? Banking rules? We handle it all. RAKEZ, DMCC, SRTIP, Hamriyah — you choose the zone, we get you live.",
     visualDescription:
-      "Launch your business with strategic UAE licensing, structure planning and expansion-ready foundations.",
-    badge: "Business Expansion",
+      "516+ companies launched. Avg setup time: 30 days. Free Zone (0% tax) or Mainland (market access) — with corporate banking included.",
+    badge: "30-Day Launch",
     icon: Briefcase,
   },
   {
     title: "Technology & IT",
-    heading: "Enterprise Digital Infrastructure",
+    heading: "Go Digital Without the Guesswork",
     description:
-      "Enterprise-grade IT consulting, product development and digital infrastructure built for long-term scale.",
+      "You need scalable software — not vendor lock-in. We build apps, cloud infra, and data systems on 40+ tech stacks with 8 AWS/Azure certified architects.",
     visualDescription:
-      "Scalable software systems, enterprise consulting and digital architecture designed for global growth.",
-    badge: "Technology Excellence",
+      "Enterprise apps, cloud migration, and BI dashboards. Built by 42 in-house engineers across 3 cloud providers and 40+ programming languages.",
+    badge: "Enterprise Scale",
     icon: Code,
   },
   {
-    title: "Blockchain Advisory",
-    heading: "Future-Ready Web3 Systems",
+    title: "Blockchain & Web3",
+    heading: "Move Finance Onchain — Securely",
     description:
-      "Advanced blockchain strategy, DLT consulting and Web3 infrastructure for modern business transformation.",
+      "Blockchain promises transparency. The reality? Cost, complexity, regulation. We bridge that gap with production-grade infrastructure on XDC, Ethereum, and Hyperledger.",
     visualDescription:
-      "Blockchain strategy, DLT consulting and secure enterprise-grade digital asset infrastructure.",
-    badge: "Web3 Innovation",
+      "6 certified blockchain engineers. 500+ smart contracts deployed. Oracle integration via Plugin. Compliance-first architecture for BFSI and asset tokenization.",
+    badge: "Web3 Infrastructure",
     icon: Globe,
   },
   {
     title: "Corporate & PRO",
-    heading: "Executive Corporate Support",
+    heading: "Your Operations, Handled",
     description:
-      "Golden Visa, banking assistance, compliance, documentation and executive corporate support services.",
+      "Golden Visa processing, corporate banking, compliance filing, and PRO services — so you focus on building, not bureaucracy. 2-hour response time guaranteed.",
     visualDescription:
-      "Banking, visas, compliance and executive-level operational support for premium business execution.",
-    badge: "Corporate Services",
+      "End-to-end operational support. Golden Visa, bank account setup, compliance documentation — delivered on a 6-day UAE work week.",
+    badge: "Concierge-Level",
     icon: Shield,
   },
 ];
@@ -80,8 +80,8 @@ export function ServicesSection() {
 
           <SectionReveal delay={0.2}>
             <p className="text-base md:text-lg text-black/55 leading-relaxed max-w-[640px] mt-6 font-light">
-              We deliver end-to-end consulting, business setup and technology
-              solutions designed for ambitious companies entering the UAE and
+              We deliver end-to-end consulting, business setup, and technology
+              solutions trusted by 500+ clients entering the UAE and
               scaling internationally.
             </p>
           </SectionReveal>

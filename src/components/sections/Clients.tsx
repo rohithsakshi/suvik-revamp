@@ -80,24 +80,24 @@ export function Clients() {
               </div>
 
               <h2 className="text-4xl md:text-5xl font-semibold text-[#1A1A1A] tracking-tight leading-tight mb-8">
-                Building Success via <span className="text-gold">Strategic</span> Alliances
+                Trusted by <span className="text-gold">Industry</span> Leaders
               </h2>
 
               <div className="space-y-6 text-lg text-charcoal/70 font-light leading-relaxed">
                 <p>
-                  At <span className="font-medium text-charcoal">Suvik Group</span>, we believe that extraordinary growth is the result of focused, strategic partnerships. Our client ecosystem comprises industry leaders in <span className="text-gold font-medium">Blockchain, Fintech, and Enterprise Legal Tech</span>.
+                  From <span className="font-medium text-charcoal">XDC Foundation</span> and <span className="text-gold font-medium">Plugin Oracle</span> to enterprise fintech leaders like Comtech Gold and Tathmeer — our clients choose Suvik because we deliver production-grade results, not prototypes.
                 </p>
                 <p>
-                  We don&apos;t just provide services; we build long-term value. By aligning with organizations that share our vision for technological excellence and market decisiveness, we ensure that every venture is built on a foundation of professional integrity and global scale.
+                  <span className="font-medium text-charcoal">AED 500M+</span> in assets tokenized. <span className="font-medium text-charcoal">500+</span> smart contracts deployed. 8+ long-term partnerships built on trust, transparency, and on-time execution.
                 </p>
                 <div className="pt-6 flex items-center gap-6">
                    <div className="flex flex-col">
-                      <span className="text-2xl font-bold text-charcoal tracking-tight">200+</span>
-                      <span className="text-[9px] uppercase tracking-widest text-charcoal/40 font-bold">Successful Launches</span>
+                      <span className="text-2xl font-bold text-charcoal tracking-tight">516+</span>
+                      <span className="text-[9px] uppercase tracking-widest text-charcoal/40 font-bold">Projects Delivered</span>
                    </div>
                    <div className="w-px h-10 bg-charcoal/10" />
                    <div className="flex flex-col">
-                      <span className="text-2xl font-bold text-charcoal tracking-tight">12+</span>
+                      <span className="text-2xl font-bold text-charcoal tracking-tight">14+</span>
                       <span className="text-[9px] uppercase tracking-widest text-charcoal/40 font-bold">Years of Trust</span>
                    </div>
                 </div>
@@ -137,16 +137,16 @@ export function Clients() {
           className="mt-24 pt-10 border-t border-charcoal/10 flex flex-col md:flex-row justify-between items-center gap-6"
         >
           <div className="text-[10px] font-medium text-black/30 uppercase tracking-[0.35em]">
-            Corporate Excellence Since 2011 — UAE & Beyond
+            8+ Global Partners & Customers — Enterprise Grade Since 2011
           </div>
           <div className="flex gap-8 items-center">
             <div className="flex items-center gap-2">
               <div className="w-1.5 h-1.5 rounded-full bg-gold" />
-              <span className="text-[9px] font-bold text-black/40 uppercase tracking-widest">Digital Leaders</span>
+              <span className="text-[9px] font-bold text-black/40 uppercase tracking-widest">Blockchain Pioneers</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-1.5 h-1.5 rounded-full bg-gold/50" />
-              <span className="text-[9px] font-bold text-black/40 uppercase tracking-widest">Global Reach</span>
+              <span className="text-[9px] font-bold text-black/40 uppercase tracking-widest">MENA & GCC</span>
             </div>
           </div>
         </motion.div>

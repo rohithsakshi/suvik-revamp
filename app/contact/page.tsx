@@ -20,15 +20,14 @@ export default function ContactPage() {
         <div className="container mx-auto px-6 md:px-12 relative z-10">
           <div className="max-w-4xl">
             <p className="text-[11px] font-semibold uppercase tracking-[0.4em] text-[#E0B97A] mb-4">
-              Connect With Us
+              Free 30-Minute Strategy Call
             </p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-charcoal mb-6 leading-[1.1] tracking-tight">
-              Global Presence <br />
-              <span className="text-[#E0B97A]">Local Expertise</span>
+              Don&apos;t Wait <br />
+              <span className="text-[#E0B97A]">3 Months. Start Now.</span>
             </h1>
             <p className="text-lg md:text-xl text-charcoal/60 max-w-2xl leading-relaxed font-light">
-              Strategic support across four global locations, ensuring seamless operations 
-              and premium corporate execution.
+              2-hour response time. 6-day work week. UAE timezone. Book a free strategy call and walk away with an actionable plan — even if we never work together.
             </p>
           </div>
         </div>
@@ -38,14 +37,14 @@ export default function ContactPage() {
         <div className="container mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 xl:gap-24">
             <Card className="p-10 bg-white border-black/5 shadow-[0_30px_60px_rgba(0,0,0,0.03)] border rounded-[32px]">
-              <h2 className="text-2xl font-semibold text-charcoal mb-8 tracking-tight">Send a Message</h2>
+              <h2 className="text-2xl font-semibold text-charcoal mb-8 tracking-tight">Book Your Free Strategy Call</h2>
               <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
                 <div className="space-y-4">
                   <input type="text" placeholder="Your Name" className="w-full bg-[#FCF9F5]/50 border border-black/10 rounded-xl p-4 text-charcoal placeholder:text-charcoal/30 focus:outline-none focus:border-[#E0B97A] transition-colors" />
                   <input type="email" placeholder="Your Email" className="w-full bg-[#FCF9F5]/50 border border-black/10 rounded-xl p-4 text-charcoal placeholder:text-charcoal/30 focus:outline-none focus:border-[#E0B97A] transition-colors" />
                   <textarea rows={5} placeholder="Your Message" className="w-full bg-[#FCF9F5]/50 border border-black/10 rounded-xl p-4 text-charcoal placeholder:text-charcoal/30 focus:outline-none focus:border-[#E0B97A] transition-colors resize-none" />
                 </div>
-                <Button type="submit" className="w-full py-7 text-[11px] tracking-[0.2em] font-bold uppercase rounded-xl">Submit Inquiry</Button>
+                <Button type="submit" className="w-full py-7 text-[11px] tracking-[0.2em] font-bold uppercase rounded-xl">Schedule Free Consultation</Button>
               </form>
             </Card>
             

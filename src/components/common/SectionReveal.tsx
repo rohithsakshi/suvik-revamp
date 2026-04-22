@@ -52,7 +52,7 @@ export function CinematicLine({
   style?: React.CSSProperties;
 }) {
   return (
-    <div className={`overflow-hidden ${className}`} style={style}>
+    <div className={`overflow-hidden pb-[0.15em] ${className}`} style={style}>
       <motion.div
         initial={{ y: "100%" }}
         whileInView={{ y: 0 }}

@@ -167,7 +167,7 @@ export function Footer() {
                 transition={{ duration: 1.2, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               >
                 <h2 className="text-4xl md:text-5xl font-light text-[#1a1a1a] mb-5 leading-tight tracking-tight">
-                  Let&apos;s Work <em className="not-italic text-gold italic">Together</em>
+                  Let&apos;s Build <em className="not-italic text-gold italic">Something Real</em>
                 </h2>
               </motion.div>
               <motion.p
@@ -176,7 +176,7 @@ export function Footer() {
                 transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
                 className="text-[#7a6a50] font-light leading-relaxed text-base md:text-lg"
               >
-                Ready to elevate your business? Get in touch with our experts today to discuss your vision.
+                Book a free 30-minute strategy call. We&apos;ll map your UAE market entry or tech roadmap — with actionable next steps, even if we never work together.
               </motion.p>
             </div>
 
@@ -243,7 +243,7 @@ export function Footer() {
               </Link>
               <p className="text-[#6b5e45] font-light leading-relaxed max-w-sm text-[15px]"
                 style={{ letterSpacing: '0.02em' }}>
-                Suvik Group of Companies is headquartered in the United Arab Emirates — a nation offering extraordinary opportunities for growth within one of the world&apos;s most stable and vibrant economies.
+                Since 2011, Suvik has helped 500+ companies launch in the UAE — from Free Zone formation to enterprise blockchain. One vendor for setup, technology, and growth.
               </p>
               <div className="flex items-center gap-4 pt-2">
                 <SocialIcon href="#" label="LinkedIn">

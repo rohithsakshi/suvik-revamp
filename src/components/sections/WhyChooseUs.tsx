@@ -5,10 +5,10 @@ import { useRef } from "react";
 import { SectionReveal, CinematicLine, StaggerReveal, StaggerItem } from "@/components/common/SectionReveal";
 
 const stats = [
-  { value: 516, suffix: "+", label: "Projects completed", ghost: "500" },
-  { value: 20, suffix: "+", label: "Group Employees", ghost: "20" },
+  { value: 516, suffix: "+", label: "Projects Delivered", ghost: "500" },
+  { value: 42, suffix: "", label: "In-House Professionals", ghost: "42" },
   { value: 4, label: "Strategic Offices", ghost: "04" },
-  { value: 60, suffix: "+", label: "Global Achievements", ghost: "60" },
+  { value: 14, suffix: "+", label: "Years of UAE Expertise", ghost: "14" },
 ];
 
 export function WhyChooseUs() {
@@ -60,10 +60,10 @@ export function WhyChooseUs() {
 
               <div className="space-y-8 text-xl text-charcoal/60 font-light leading-relaxed max-w-xl">
                 <p>
-                  At <span className="text-charcoal font-medium">SUVIK</span>, we specialize in assisting businesses to achieve their goals, whether it&apos;s a family-owned business, a public, private, or multinational organization.
+                  Most consultancies offer either business setup <em>or</em> IT services. <span className="text-charcoal font-medium">SUVIK does both</span> — under one roof, with one point of contact, on UAE time.
                 </p>
                 <p>
-                  With our <span className="text-[#C9A96E] font-medium">partner-led approach</span>, we deliver the highest quality of service by using functional communication chains to aid rapid and accurate decision-making.
+                  Our <span className="text-[#C9A96E] font-medium">partner-led approach</span> means you work directly with senior leadership — not junior account managers. Fixed scopes, transparent pricing, and a guaranteed <span className="font-medium text-charcoal">2-hour response time</span>.
                 </p>
               </div>
 
@@ -95,7 +95,7 @@ export function WhyChooseUs() {
                   transition={{ delay: 0.8 }}
                   className="text-[10px] font-bold text-charcoal/30 uppercase tracking-[0.35em]"
                 >
-                  Elite global excellence
+                  Setup + IT + Blockchain — One Vendor
                 </motion.div>
               </div>
             </SectionReveal>

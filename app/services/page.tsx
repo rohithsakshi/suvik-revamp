@@ -13,10 +13,9 @@ export default function ServicesPage() {
             <h1 className="text-4xl md:text-5xl font-semibold text-white mb-6 leading-tight tracking-tight">
               Our <span className="text-[#E0B97A]">Services</span>
             </h1>
-            <p className="text-lg text-white/50 max-w-2xl leading-relaxed font-light">
-              Comprehensive business solutions and technological excellence tailored for
-              the UAE's evolving corporate landscape.
-            </p>
+            {/* <p className="text-lg text-white/50 max-w-2xl leading-relaxed font-light">
+              End-to-end business setup, IT consulting, blockchain infrastructure, and corporate services — trusted by 500+ clients across the UAE and beyond.
+            </p> */}
           </div>
         </div>
       </section>

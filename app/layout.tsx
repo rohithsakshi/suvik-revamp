@@ -12,9 +12,9 @@ const space = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Suvik Group Of Companies | Premium Corporate Services",
+  title: "Suvik Group | UAE Company Setup in 30 Days + Enterprise Blockchain",
   description:
-    "UAE's premium corporate IT, Blockchain, and Business Setup services.",
+    "Set up your UAE company in 30 days — or build enterprise blockchain. 516+ projects delivered since 2011. Free Zone, Mainland, Offshore formation + XDC, Ethereum, Hyperledger development. Schedule a free consultation.",
 };
 
 export default function RootLayout({

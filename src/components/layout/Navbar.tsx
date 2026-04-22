@@ -91,7 +91,7 @@ export function Navbar() {
                 }}
                 className="py-2 rounded-full bg-charcoal text-white text-[8px] md:text-[9px] font-bold tracking-[0.2em] md:tracking-[0.25em] uppercase transition-all duration-500 hover:bg-gold whitespace-nowrap"
               >
-                Contact
+                Contact Us
               </motion.button>
             </Link>
 

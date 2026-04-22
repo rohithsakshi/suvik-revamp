@@ -28,27 +28,26 @@ export function CTASection() {
             </div>
             
             <h2 className="text-5xl md:text-7xl font-semibold text-charcoal mb-10 leading-[1.05] tracking-tight">
-              <CinematicLine>Ready to Scale</CinematicLine>
-              <CinematicLine delay={0.1}><span className="text-gold italic font-light">Your Vision in UAE?</span></CinematicLine>
+              <CinematicLine>Your Competitors</CinematicLine>
+              <CinematicLine delay={0.1}><span className="text-gold italic font-light">Are Already Here.</span></CinematicLine>
             </h2>
 
             <SectionReveal delay={0.3}>
               <p className="text-xl md:text-2xl text-charcoal/60 mb-16 max-w-2xl mx-auto leading-relaxed font-light tracking-wide">
-                Partner with Suvik Group to navigate the complexities of corporate formation, 
-                local laws, and next-generation technology integration.
+                516+ companies launched. 14 years of UAE expertise. Schedule a free 30-minute consultation — and walk away with a clear action plan, even if we never work together.
               </p>
             </SectionReveal>
 
             <SectionReveal delay={0.5} className="flex flex-col sm:flex-row items-center justify-center gap-6">
               <Link href="/contact" className="w-full sm:w-auto">
                 <Button variant="gold" className="w-full sm:w-auto group px-12 py-8 text-[11px] tracking-[0.25em] shadow-[0_20px_40px_rgba(212,175,55,0.15)] hover:shadow-[0_20px_50px_rgba(212,175,55,0.3)] transition-all duration-500 hover:-translate-y-1">
-                  Start Your Journey <ArrowRight className="ml-3 w-4 h-4 transition-transform group-hover:translate-x-2" />
+                  Schedule Free Consultation <ArrowRight className="ml-3 w-4 h-4 transition-transform group-hover:translate-x-2" />
                 </Button>
               </Link>
               
               <Link href="/services" className="w-full sm:w-auto">
                 <Button variant="outline" className="w-full sm:w-auto border-charcoal/10 font-bold uppercase tracking-widest text-[10px] px-12 py-8 bg-transparent hover:bg-charcoal/5 transition-colors duration-500">
-                  Explore Services
+                  View Our Work
                 </Button>
               </Link>
             </SectionReveal>

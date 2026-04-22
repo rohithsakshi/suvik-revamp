@@ -65,7 +65,7 @@ export function Hero() {
         {/* SUBTEXT */}
         <SectionReveal delay={0.4} className="mb-10 md:mb-14 max-w-2xl text-center">
           <p className="text-base md:text-xl text-charcoal/60 leading-relaxed font-light tracking-wide px-4 md:px-0">
-            Headquartered in the United Arab Emirates, we transform ideas into structured growth through elite business formation and technological excellence.
+            Set up your company in the UAE in 30 days — or build enterprise blockchain. We&apos;ve done both 500+ times since 2011, from Free Zone to Fortune 500.
           </p>
         </SectionReveal>
 
@@ -74,7 +74,7 @@ export function Hero() {
           <StaggerItem className="w-full sm:w-auto">
             <Link href="/contact" className="w-full">
               <Button variant="gold" className="w-full sm:w-auto px-8 md:px-10 py-6 md:py-7 text-[10px] md:text-[11px] tracking-[0.25em] shadow-[0_15px_35px_rgba(212,175,55,0.2)]">
-                Start Your Business
+                Schedule Free Consultation
               </Button>
             </Link>
           </StaggerItem>
@@ -82,7 +82,7 @@ export function Hero() {
           <StaggerItem className="w-full sm:w-auto">
             <Link href="/services" className="w-full">
               <Button variant="outline" className="w-full sm:w-auto px-8 md:px-10 py-6 md:py-7 text-[10px] md:text-[11px] tracking-[0.25em] border-charcoal/10 bg-white/50 backdrop-blur-sm hover:shadow-lg transition-shadow">
-                Explore Services
+                View Case Studies
               </Button>
             </Link>
           </StaggerItem>
@@ -92,17 +92,17 @@ export function Hero() {
         <StaggerReveal baseDelay={1} stagger={0.1} className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-x-12 gap-y-4 pt-10 border-t border-charcoal/10 text-[9px] md:text-[10px] font-bold uppercase tracking-[0.25em] md:tracking-[0.3em] text-charcoal/50">
           <StaggerItem className="flex items-center gap-3">
             <Check className="w-3.5 h-3.5 md:w-4 h-4 text-gold stroke-[3]" />
-            100+ Businesses Launched
+            516+ Projects Delivered
           </StaggerItem>
 
           <StaggerItem className="flex items-center gap-3">
             <Check className="w-3.5 h-3.5 md:w-4 h-4 text-gold stroke-[3]" />
-            UAE Market Experts
+            14 Years UAE Expertise
           </StaggerItem>
 
           <StaggerItem className="flex items-center gap-3 sm:hidden lg:flex">
             <Check className="w-3.5 h-3.5 md:w-4 h-4 text-gold stroke-[3]" />
-            End-to-End Solutions
+            98% On-Time Delivery
           </StaggerItem>
         </StaggerReveal>
 

@@ -44,15 +44,15 @@ export function AboutPreview() {
               </div>
 
               <h2 className="text-4xl md:text-5xl font-semibold text-charcoal mb-8 leading-[1.1] tracking-tight">
-                <CinematicLine>A Decade of</CinematicLine>
-                <CinematicLine delay={0.1}><span className="text-gold">Excellence in UAE</span></CinematicLine>
+                <CinematicLine>Built to Solve</CinematicLine>
+                <CinematicLine delay={0.1}><span className="text-gold">What Others Can&apos;t</span></CinematicLine>
               </h2>
 
               <StaggerReveal baseDelay={0.3} stagger={0.15} className="flex flex-col gap-6">
                 {[
-                  "Pioneering IT Solutions",
-                  "Blockchain & DLT Experts",
-                  "Trusted Corporate Partner"
+                  "6 Certified Blockchain Engineers",
+                  "XDC · Ethereum · Hyperledger",
+                  "RAKEZ & DED Licensed Partner"
                 ].map((item, i) => (
                   <StaggerItem key={i} className="flex items-center gap-4">
                     <motion.div 
@@ -78,21 +78,22 @@ export function AboutPreview() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, delay: 0.5 }}
                   >
-                    &quot;Winning should be at the heart of every Strategy.&quot;
+                    &quot;Fourteen years ago, I saw founders struggling with UAE bureaucracy. We built Suvik to solve that — once and for all.&quot;
                   </motion.span>
                 </blockquote>
+                <p className="text-sm text-charcoal/40 mt-3 font-medium tracking-wide">— Vinod Khurana, CEO &amp; Co-Founder</p>
               </div>
 
               <div className="space-y-8 text-lg md:text-xl text-charcoal/80 leading-relaxed font-light">
                 <p>
-                  <span className="font-semibold text-charcoal text-xl block mb-2">Since 2011</span>
-                  Founded in year 2011, Suvik Group is based in the UAE. A decade of experience has made us a trusted partner for businesses seeking innovative and reliable IT solutions.
+                  <span className="font-semibold text-charcoal text-xl block mb-2">The Problem We Solve</span>
+                  Most founders spend 3–6 months navigating Free Zones, licenses, visas, and banking. We&apos;ve compressed that into 30 days — 516 times and counting.
                 </p>
                 <p>
-                  At Suvik, we are committed to delivering cutting-edge IT solutions that transform businesses. With a deep understanding of <span className="text-gold font-medium">Distributed Ledger Technology and Blockchain</span>, we offer comprehensive IT consultancy services to help our clients unlock their full potential.
+                  Beyond business setup, we build enterprise-grade <span className="text-gold font-medium">blockchain infrastructure on XDC, Ethereum, and Hyperledger</span> — powering real-world assets, DeFi protocols, and institutional compliance layers across the GCC.
                 </p>
                 <p>
-                  Suvik continues to lead the way in IT services and blockchain technology, driving digital transformation and delivering innovative solutions to meet the evolving needs of businesses in the UAE and beyond.
+                  From a family-owned startup to a multinational expansion, Suvik is the one vendor that handles both your <span className="font-medium text-charcoal">corporate formation and technology stack</span> — under one roof, on UAE time.
                 </p>
               </div>
             </SectionReveal>
